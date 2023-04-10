@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'ccontroller.dart';
-
 import 'cdialog.dart';
 import 'style.dart';
 
