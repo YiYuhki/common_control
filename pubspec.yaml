@@ -4,7 +4,6 @@ version: 0.0.1
 homepage: https://github.com/YiYuhki
 repository: https://github.com/YiYuhki/common_control
 
-publish_to: https://pub.dev/
 
 environment:
   sdk: '>=2.19.6 <3.0.0'
