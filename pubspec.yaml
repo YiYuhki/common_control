@@ -1,7 +1,9 @@
 name: common_control
-description: A new Flutter package project.
+description: A new widget to replace the default widget
 version: 0.0.1
-homepage:
+publisher: missbsd@gmail.com
+homepage: https://github.com/YiYuhki
+repository: https://github.com/YiYuhki/common_control
 
 environment:
   sdk: '>=2.19.6 <3.0.0'

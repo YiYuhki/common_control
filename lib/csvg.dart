@@ -20,7 +20,7 @@ class CSvg extends CWidget {
   @override
   Widget init(BuildContext context) {
     Widget widget =
-        SvgPicture.asset(filename, width: width, height: height, color: color);
+        SvgPicture.asset(filename, width: width, height: height);
 
     return widget;
   }
