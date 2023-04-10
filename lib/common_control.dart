@@ -14,6 +14,7 @@ export 'csvg.dart';
 export 'ctext.dart';
 export 'ctextfield.dart';
 export 'style.dart';
+export 'cwidget.dart';
 export 'cfixedbottom.dart';
 export 'ccontent_scroll.dart';
 export 'ccontroller.dart';
