@@ -15,6 +15,7 @@ class CScroll extends CWidget {
       super.style,
       super.gap,
       super.onTap,
+      super.decoration,
       super.backgroundColor});
 
   final List<Widget> children;
@@ -27,6 +28,8 @@ class CScroll extends CWidget {
     MainAxisAlignment? mainAxisAlignment = this.mainAxisAlignment;
     double? gap = this.gap;
 
+    Decoration? decoration = this.decoration;
+
     if (style != null) {
       crossAxisAlignment = crossAxisAlignment ??
           style?.crossAxisAlignment ??
@@ -35,6 +38,8 @@ class CScroll extends CWidget {
           style?.mainAxisAlignment ??
           this.mainAxisAlignment;
       gap = gap ?? style?.gap ?? this.gap;
+
+      decoration = decoration ?? style?.decoration ?? this.decoration;
     }
 
     if (gap != null) {
@@ -60,19 +65,21 @@ class CScroll extends CWidget {
       ),
     );
 
-    Decoration? decoration;
-
     if (border != null) {
-      decoration = BoxDecoration(border: border);
+      decoration = decoration ?? BoxDecoration(border: border);
     }
 
-    if (margin != null || width != null || height != null || border != null) {
+    if (margin != null || width != null || height != null || decoration != null) {
       widget = Container(
           margin: margin,
           width: width,
           height: height,
           decoration: decoration,
           child: widget);
+    }
+
+    if (backgroundColor != null || margin != null) {
+      widget = Container(color: backgroundColor, margin: margin, child: widget);
     }
 
     return widget;

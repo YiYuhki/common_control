@@ -13,3 +13,7 @@
 ## 0.0.4
 
 * add expanded, decoration property
+
+## 0.0.5
+
+* CScroll add margin, backgroundColor
