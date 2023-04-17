@@ -17,3 +17,7 @@
 ## 0.0.5
 
 * CScroll add margin, backgroundColor
+
+## 0.0.6
+
+* All Controll add expanded, decoration property

@@ -12,6 +12,8 @@ class CSvg extends CWidget {
       super.flex,
       super.style,
       this.color,
+      super.expanded,
+      super.decoration,
       super.onTap});
 
   final String filename;

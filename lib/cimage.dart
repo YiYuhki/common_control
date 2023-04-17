@@ -13,6 +13,8 @@ class CImage extends CWidget {
       super.padding,
       super.onTap,
       super.flex,
+      super.expanded,
+      super.decoration,
       super.style});
 
   final BoxFit? fit;

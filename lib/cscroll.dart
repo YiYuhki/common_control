@@ -69,9 +69,8 @@ class CScroll extends CWidget {
       decoration = decoration ?? BoxDecoration(border: border);
     }
 
-    if (margin != null || width != null || height != null || decoration != null) {
+    if (width != null || height != null || decoration != null) {
       widget = Container(
-          margin: margin,
           width: width,
           height: height,
           decoration: decoration,
@@ -84,4 +83,47 @@ class CScroll extends CWidget {
 
     return widget;
   }
+
+  @override
+  Widget init(BuildContext context) {
+    List<Widget>? children = this.children;
+
+    CrossAxisAlignment? crossAxisAlignment = this.crossAxisAlignment;
+    MainAxisAlignment? mainAxisAlignment = this.mainAxisAlignment;
+    double? gap = this.gap;
+
+    if (style != null) {
+      crossAxisAlignment = crossAxisAlignment ??
+          style?.crossAxisAlignment ??
+          this.crossAxisAlignment;
+      mainAxisAlignment = mainAxisAlignment ??
+          style?.mainAxisAlignment ??
+          this.mainAxisAlignment;
+      gap = gap ?? style?.gap ?? this.gap;
+    }
+
+    if (gap != null) {
+      var items = <Widget>[];
+
+      for (var i = 0; i < children.length; i++) {
+        if (i > 0) {
+          items.add(SizedBox(height: gap));
+        }
+
+        items.add(children[i]);
+      }
+
+      children = items;
+    }
+
+    Widget widget = SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
+        mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
+        children: children,
+      ),
+    );
+
+    return widget;
+   } 
 }

@@ -15,6 +15,7 @@ class CColumn extends CWidget {
       super.style,
       super.gap,
       super.onTap,
+      super.decoration,
       super.backgroundColor});
 
   final List<Widget> children;
