@@ -14,6 +14,8 @@ class Style {
       this.mainAxisAlignment,
       this.icon,
       this.rearIcon,
+      this.expanded,
+      this.decoration,
       this.gap});
 
   final double? width;
@@ -32,4 +34,7 @@ class Style {
   final Widget? rearIcon;
 
   final double? gap;
+
+  final bool? expanded;
+  final Decoration? decoration;
 }

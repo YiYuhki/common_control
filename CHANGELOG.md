@@ -9,3 +9,7 @@
 ## 0.0.3
 
 * export CWidget
+
+## 0.0.4
+
+* add expanded, decoration property

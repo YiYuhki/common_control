@@ -35,6 +35,7 @@ class CWidget extends StatelessWidget {
       this.padding,
       this.border,
       this.flex,
+      this.expanded,
       this.style,
       this.gap,
       this.backgroundColor,
@@ -43,6 +44,7 @@ class CWidget extends StatelessWidget {
       this.rearIcon,
       this.crossAxisAlignment,
       this.mainAxisAlignment,
+      this.decoration,
       this.tag});
 
   final double? width;
@@ -51,6 +53,7 @@ class CWidget extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final Border? border;
   final int? flex;
+  final bool? expanded;
   final double? gap;
   final Color? backgroundColor;
 
@@ -63,6 +66,8 @@ class CWidget extends StatelessWidget {
 
   final CrossAxisAlignment? crossAxisAlignment;
   final MainAxisAlignment? mainAxisAlignment;
+
+  final Decoration? decoration;
 
   final String? tag;
 
@@ -116,6 +121,8 @@ class CWidget extends StatelessWidget {
     int? flex = this.flex;
     Widget? icon = this.icon;
     Widget? rearIcon = this.rearIcon;
+    bool? expanded = this.expanded;
+    Decoration? decoration = this.decoration;
 
     CrossAxisAlignment? crossAxisAlignment = this.crossAxisAlignment;
     MainAxisAlignment? mainAxisAlignment = this.mainAxisAlignment;
@@ -150,6 +157,9 @@ class CWidget extends StatelessWidget {
 
       icon = icon ?? style.icon ?? this.icon;
       rearIcon = rearIcon ?? style.rearIcon ?? this.rearIcon;
+
+      expanded = expanded ?? style.expanded ?? this.expanded;
+      decoration = decoration ?? style.decoration ?? this.decoration;
     }
 
     Widget widget = init(context);
@@ -162,13 +172,15 @@ class CWidget extends StatelessWidget {
       widget = Flexible(flex: flex, child: widget);
     }
 
-    Decoration? decoration;
-
-    if (border != null) {
-      decoration = BoxDecoration(border: border);
+    if (expanded != null) {
+      widget = Expanded(child: widget);
     }
 
-    if (border != null || width != null || height != null) {
+    if (border != null) {
+      decoration = decoration ?? BoxDecoration(border: border);
+    }
+
+    if (decoration != null || width != null || height != null) {
       widget = Container(
           decoration: decoration, width: width, height: height, child: widget);
     }
