@@ -28,7 +28,7 @@ class CScroll extends CWidget {
     CrossAxisAlignment? crossAxisAlignment = this.crossAxisAlignment;
     MainAxisAlignment? mainAxisAlignment = this.mainAxisAlignment;
     double? gap = this.gap;
-    String? scrollDirection = this.scrollDirection;
+    Axis? scrollDirection = this.scrollDirection;
 
     if (style != null) {
       crossAxisAlignment = crossAxisAlignment ??
@@ -55,14 +55,13 @@ class CScroll extends CWidget {
     }
 
     if (scrollDirection != null) {
-      scrollDirection = 'row';
+      scrollDirection = Axis.horizontal;
     }
-    scrollDirection ?? 'column';
+    scrollDirection ??= Axis.vertical;
 
     Widget widget = SingleChildScrollView(
-      scrollDirection:
-          scrollDirection == 'column' ? Axis.vertical : Axis.horizontal,
-      child: scrollDirection == 'column'
+      scrollDirection: scrollDirection,
+      child: scrollDirection == Axis.vertical
           ? Column(
               crossAxisAlignment:
                   crossAxisAlignment ?? CrossAxisAlignment.start,

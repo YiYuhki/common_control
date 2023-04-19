@@ -72,7 +72,7 @@ class CWidget extends StatelessWidget {
 
   final String? tag;
 
-  final String? scrollDirection;
+  final Axis? scrollDirection;
 
   final CController commonController = Get.find<CController>();
 
