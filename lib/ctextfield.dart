@@ -1,5 +1,5 @@
 import 'package:flutter/services.dart';
-import 'cwidget.dart';
+import 'common_control.dart';
 
 enum CTextFieldType { text, number }
 
@@ -27,7 +27,10 @@ class CTextField extends CWidget {
       super.flex,
       super.style,
       super.onTap,
-      super.backgroundColor});
+      super.visible,
+      super.borderRadius,
+      super.backgroundColor,
+      super.tag});
 
   final bool? disabled;
   final bool? obscure;

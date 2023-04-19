@@ -1,4 +1,4 @@
-import 'cwidget.dart';
+import 'common_control.dart';
 
 class CContainer extends CWidget {
   CContainer(
@@ -15,6 +15,8 @@ class CContainer extends CWidget {
       super.onTap,
       super.expanded,
       super.decoration,
+      super.visible,
+      super.borderRadius,
       super.backgroundColor});
 
   final Widget child;

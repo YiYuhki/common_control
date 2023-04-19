@@ -1,7 +1,7 @@
 import 'common_control.dart';
 
-class CScroll extends CWidget {
-  CScroll(
+class CBothSide extends CWidget {
+  CBothSide(
       {super.key,
       required super.children,
       super.margin,
@@ -19,17 +19,13 @@ class CScroll extends CWidget {
       super.decoration,
       super.visible,
       super.borderRadius,
-      super.backgroundColor,
-      super.tag});
-
+      super.backgroundColor});
+  
   @override
   Widget initChildren(Widget widget, List<Widget> children, MainAxisAlignment? mainAxisAlignment, CrossAxisAlignment? crossAxisAlignment, BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
-        mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
-        children: children
-      ),
-    );
-   } 
+    return Row(
+        crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
+        mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.spaceBetween,
+        children: children);
+  }
 }
