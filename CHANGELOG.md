@@ -95,3 +95,8 @@
 ## 0.0.24
 
 * Fix CWidget.initialize
+
+## 0.0.25
+
+* add scroll direction in cscroll by cjh94
+* Fix CWidget.initialize
