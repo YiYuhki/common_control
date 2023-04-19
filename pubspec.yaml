@@ -4,9 +4,8 @@ version: 0.0.6
 homepage: https://github.com/YiYuhki
 repository: https://github.com/YiYuhki/common_control
 
-
 environment:
-  sdk: '>=2.19.6 <3.0.0'
+  sdk: ">=2.19.6 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:

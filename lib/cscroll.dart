@@ -16,7 +16,8 @@ class CScroll extends CWidget {
       super.gap,
       super.onTap,
       super.decoration,
-      super.backgroundColor});
+      super.backgroundColor,
+      super.scrollDirection});
 
   final List<Widget> children;
 
@@ -27,6 +28,7 @@ class CScroll extends CWidget {
     CrossAxisAlignment? crossAxisAlignment = this.crossAxisAlignment;
     MainAxisAlignment? mainAxisAlignment = this.mainAxisAlignment;
     double? gap = this.gap;
+    String? scrollDirection = this.scrollDirection;
 
     if (style != null) {
       crossAxisAlignment = crossAxisAlignment ??
@@ -52,14 +54,29 @@ class CScroll extends CWidget {
       children = items;
     }
 
+    if (scrollDirection != null) {
+      scrollDirection = 'row';
+    }
+    scrollDirection ?? 'column';
+
     Widget widget = SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
-        mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
-        children: children,
-      ),
+      scrollDirection:
+          scrollDirection == 'column' ? Axis.vertical : Axis.horizontal,
+      child: scrollDirection == 'column'
+          ? Column(
+              crossAxisAlignment:
+                  crossAxisAlignment ?? CrossAxisAlignment.start,
+              mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
+              children: children,
+            )
+          : Row(
+              crossAxisAlignment:
+                  crossAxisAlignment ?? CrossAxisAlignment.start,
+              mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
+              children: children,
+            ),
     );
 
     return widget;
-   } 
+  }
 }

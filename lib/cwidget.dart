@@ -45,7 +45,8 @@ class CWidget extends StatelessWidget {
       this.crossAxisAlignment,
       this.mainAxisAlignment,
       this.decoration,
-      this.tag});
+      this.tag,
+      this.scrollDirection});
 
   final double? width;
   final double? height;
@@ -70,6 +71,8 @@ class CWidget extends StatelessWidget {
   final Decoration? decoration;
 
   final String? tag;
+
+  final String? scrollDirection;
 
   final CController commonController = Get.find<CController>();
 
