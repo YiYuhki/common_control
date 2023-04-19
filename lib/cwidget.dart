@@ -28,7 +28,8 @@ class CWidget extends StatelessWidget {
       this.iconMargin,
       this.rearIconMargin,
       this.children,
-      this.tag});
+      this.tag,
+      this.scrollDirection});
 
   final List<Widget>? children;
 
@@ -60,6 +61,8 @@ class CWidget extends StatelessWidget {
   final String? tag;
   final bool? visible;
   final double? borderRadius;
+
+  final Axis? scrollDirection;
 
   final CController commonController = Get.find<CController>();
 

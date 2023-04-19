@@ -20,16 +20,30 @@ class CScroll extends CWidget {
       super.visible,
       super.borderRadius,
       super.backgroundColor,
-      super.tag});
+      super.tag,
+      super.scrollDirection});
 
   @override
-  Widget initChildren(Widget widget, List<Widget> children, MainAxisAlignment? mainAxisAlignment, CrossAxisAlignment? crossAxisAlignment, BuildContext context) {
+  Widget initChildren(
+      Widget widget,
+      List<Widget> children,
+      MainAxisAlignment? mainAxisAlignment,
+      CrossAxisAlignment? crossAxisAlignment,
+      BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
-        mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
-        children: children
-      ),
+      scrollDirection: scrollDirection ?? Axis.vertical,
+      child: scrollDirection == Axis.vertical
+          ? Column(
+              crossAxisAlignment:
+                  crossAxisAlignment ?? CrossAxisAlignment.start,
+              mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
+              children: children)
+          : Row(
+              crossAxisAlignment:
+                  crossAxisAlignment ?? CrossAxisAlignment.center,
+              mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
+              children: children,
+            ),
     );
-   } 
+  }
 }
