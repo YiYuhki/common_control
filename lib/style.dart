@@ -16,6 +16,10 @@ class Style {
       this.rearIcon,
       this.expanded,
       this.decoration,
+      this.visible,
+      this.borderRadius,
+      this.iconMargin,
+      this.rearIconMargin,
       this.gap});
 
   final double? width;
@@ -37,4 +41,9 @@ class Style {
 
   final bool? expanded;
   final Decoration? decoration;
+  final bool? visible;
+  final double? borderRadius;
+
+  final double? iconMargin;
+  final double? rearIconMargin;
 }

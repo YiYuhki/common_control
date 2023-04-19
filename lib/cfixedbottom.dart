@@ -1,10 +1,10 @@
-import 'cwidget.dart';
+import 'common_control.dart';
 
 class CFixedBottom extends CWidget {
   CFixedBottom(
       {super.key,
       this.body,
-      this.children,
+      super.children,
       required this.bottom,
       super.margin,
       super.width,
@@ -12,10 +12,16 @@ class CFixedBottom extends CWidget {
       super.padding,
       super.border,
       super.flex,
-      super.style});
+      super.style,      
+      super.onTap,
+      super.expanded,
+      super.decoration,
+      super.visible,
+      super.borderRadius,
+      super.backgroundColor,
+      super.tag});
 
   final Widget? body;
-  final List<Widget>? children;
   final Widget bottom;
 
   @override
@@ -37,6 +43,12 @@ class CFixedBottom extends CWidget {
         border: border,
         flex: flex,
         style: style,
+        expanded: expanded,
+        decoration: decoration,
+        visible: visible,
+        borderRadius: borderRadius,
+        backgroundColor: backgroundColor,
+        tag: tag,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(child: SingleChildScrollView(child: body!)),

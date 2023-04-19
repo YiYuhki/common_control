@@ -1,5 +1,5 @@
 import 'package:flutter_svg/svg.dart';
-import 'cwidget.dart';
+import 'common_control.dart';
 
 class CSvg extends CWidget {
   CSvg(this.filename,
@@ -14,7 +14,11 @@ class CSvg extends CWidget {
       this.color,
       super.expanded,
       super.decoration,
-      super.onTap});
+      super.visible,
+      super.borderRadius,
+      super.onTap,
+      super.backgroundColor,
+      super.tag});
 
   final String filename;
   final Color? color;

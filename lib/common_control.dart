@@ -16,10 +16,12 @@ export 'ctextfield.dart';
 export 'style.dart';
 export 'cwidget.dart';
 export 'cfixedbottom.dart';
-export 'ccontent_scroll.dart';
 export 'ccontroller.dart';
 export 'infinite_controller.dart';
 export 'infinite_scroll.dart';
+export 'cbothside.dart';
+export 'cconfig.dart';
+export 'http.dart';
 
 export 'package:flutter/material.dart';
 export 'package:get/get.dart';

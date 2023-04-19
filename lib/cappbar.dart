@@ -1,6 +1,5 @@
+import 'common_control.dart';
 import 'package:flutter/cupertino.dart';
-
-import 'cwidget.dart';
 
 class CAppBar extends CWidget {
   CAppBar(

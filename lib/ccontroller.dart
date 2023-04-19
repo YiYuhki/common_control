@@ -1,4 +1,4 @@
-import 'cwidget.dart';
+import 'common_control.dart';
 
 class CController extends GetxController {
   final isUse = true.obs;
@@ -19,7 +19,7 @@ class CController extends GetxController {
     }
   }
 
-  setStyle(name, value) {
-    style[name] = value;
+  setStyle(route, value) {
+    _style[route] = value;
   }
 }

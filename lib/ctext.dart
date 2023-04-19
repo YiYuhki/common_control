@@ -1,4 +1,4 @@
-import 'cwidget.dart';
+import 'common_control.dart';
 
 class CText extends CWidget {
   CText(this.text,
@@ -15,10 +15,22 @@ class CText extends CWidget {
       super.icon,
       super.rearIcon,
       super.backgroundColor,
+      super.expanded,
+      super.decoration,
+      super.visible,
+      super.borderRadius,
+      this.overflow,
+      this.maxLines,
+      this.softWrap,
+      super.iconMargin,
+      super.rearIconMargin,
       super.tag});
 
   final String text;
   final TextStyle? textStyle;
+  final TextOverflow? overflow;
+  final int? maxLines;
+  final bool? softWrap;
 
   @override
   Widget init(BuildContext context) {
@@ -37,7 +49,7 @@ class CText extends CWidget {
       textStyle = textStyle ?? style?.textStyle;
     }
 
-    Widget widget = Text(text, style: textStyle);
+    Widget widget = Text(text, style: textStyle, overflow: overflow, maxLines: maxLines, softWrap: softWrap);
 
     return widget;
   }

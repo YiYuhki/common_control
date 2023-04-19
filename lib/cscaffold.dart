@@ -1,4 +1,4 @@
-import 'cwidget.dart';
+import 'common_control.dart';
 
 class CScaffold extends CWidget {
   CScaffold(
