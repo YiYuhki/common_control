@@ -9,7 +9,8 @@ class CScaffold extends CWidget {
       super.backgroundColor,
       this.bottomNavigationBar,
       this.extendBodyBehindAppBar = false,
-      this.safeArea = true});
+      this.safeArea = true,
+      this.resizeToAvoidBottomInset = true});
 
   final Widget body;
   final Widget? appBar;
@@ -17,6 +18,7 @@ class CScaffold extends CWidget {
   final Widget? bottomNavigationBar;
   final bool extendBodyBehindAppBar;
   final bool safeArea;
+  bool? resizeToAvoidBottomInset;
 
   final appbarHeight = const Size.fromHeight(54);
 
@@ -38,13 +40,18 @@ class CScaffold extends CWidget {
       body = SafeArea(child: body);
     }
 
+    if (resizeToAvoidBottomInset == false) {
+      resizeToAvoidBottomInset = false;
+    }
+
     if (appBar == null) {
       widget = Scaffold(
           backgroundColor: backgroundColor,
           body: body,
           bottomNavigationBar: bottomNavigationBar,
           extendBody: extendBody,
-          extendBodyBehindAppBar: extendBodyBehindAppBar);
+          extendBodyBehindAppBar: extendBodyBehindAppBar,
+          resizeToAvoidBottomInset: resizeToAvoidBottomInset);
     } else {
       widget = Scaffold(
           backgroundColor: backgroundColor,
@@ -52,7 +59,8 @@ class CScaffold extends CWidget {
           body: body,
           bottomNavigationBar: bottomNavigationBar,
           extendBody: extendBody,
-          extendBodyBehindAppBar: extendBodyBehindAppBar);
+          extendBodyBehindAppBar: extendBodyBehindAppBar,
+          resizeToAvoidBottomInset: resizeToAvoidBottomInset);
     }
 
     if (autoLostFocus != null && autoLostFocus == true) {
