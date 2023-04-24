@@ -1,4 +1,4 @@
-import 'cwidget.dart';
+import 'common_control.dart';
 
 class CForm extends CColumn {
   CForm(
@@ -27,7 +27,7 @@ class CFormfield extends CWidget {
       this.buttonText,
       this.onPressed,
       this.disabled = false,
-      this.visible = true,
+      super.visible,
       this.obscure = false,
       this.errText,
       this.focusNode,
@@ -39,7 +39,6 @@ class CFormfield extends CWidget {
   final String? buttonText;
   final void Function()? onPressed;
   final bool disabled;
-  final bool visible;
   final bool obscure;
   final String? errText;
   final FocusNode? focusNode;

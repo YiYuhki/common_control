@@ -4,28 +4,6 @@ import 'ccontroller.dart';
 import 'cdialog.dart';
 import 'style.dart';
 
-export 'cappbar.dart';
-export 'cbutton.dart';
-export 'ccolumn.dart';
-export 'ccontainer.dart';
-export 'cdialog.dart';
-export 'cform.dart';
-export 'cimage.dart';
-export 'crow.dart';
-export 'cscaffold.dart';
-export 'cscroll.dart';
-export 'csvg.dart';
-export 'ctext.dart';
-export 'ctextfield.dart';
-export 'style.dart';
-export 'cfixedbottom.dart';
-export 'ccontent_scroll.dart';
-export 'ccontroller.dart';
-
-export 'package:flutter/material.dart';
-export 'package:get/get.dart';
-export 'package:cached_network_image/cached_network_image.dart';
-
 class CWidget extends StatelessWidget {
   CWidget(
       {super.key,
@@ -45,7 +23,15 @@ class CWidget extends StatelessWidget {
       this.crossAxisAlignment,
       this.mainAxisAlignment,
       this.decoration,
-      this.tag});
+      this.visible,
+      this.borderRadius,
+      this.iconMargin,
+      this.rearIconMargin,
+      this.children,
+      this.tag,
+      this.scrollDirection});
+
+  final List<Widget>? children;
 
   final double? width;
   final double? height;
@@ -64,12 +50,19 @@ class CWidget extends StatelessWidget {
   final Widget? icon;
   final Widget? rearIcon;
 
+  final double? iconMargin;
+  final double? rearIconMargin;
+
   final CrossAxisAlignment? crossAxisAlignment;
   final MainAxisAlignment? mainAxisAlignment;
 
   final Decoration? decoration;
 
   final String? tag;
+  final bool? visible;
+  final double? borderRadius;
+
+  final Axis? scrollDirection;
 
   final CController commonController = Get.find<CController>();
 
@@ -77,11 +70,24 @@ class CWidget extends StatelessWidget {
     return Container();
   }
 
+  Widget initChildren(
+      Widget widget,
+      List<Widget> children,
+      MainAxisAlignment? mainAxisAlignment,
+      CrossAxisAlignment? crossAxisAlignment,
+      BuildContext context) {
+    return widget;
+  }
+
   get contentHeight =>
       Get.height -
       MediaQuery.of(Get.context!).padding.top +
       MediaQuery.of(Get.context!).padding.bottom -
       AppBar().preferredSize.height;
+
+  static initialize() {
+    Get.put(CController());
+  }
 
   unfocus() {
     Get.focusScope?.unfocus();
@@ -123,19 +129,27 @@ class CWidget extends StatelessWidget {
     Widget? rearIcon = this.rearIcon;
     bool? expanded = this.expanded;
     Decoration? decoration = this.decoration;
+    bool? visible = this.visible;
+    double? borderRadius = this.borderRadius;
+    double? iconMargin = this.iconMargin;
+    double? rearIconMargin = this.rearIconMargin;
 
     CrossAxisAlignment? crossAxisAlignment = this.crossAxisAlignment;
     MainAxisAlignment? mainAxisAlignment = this.mainAxisAlignment;
 
     Color? backgroundColor = this.backgroundColor;
     Style? style = this.style;
+    double? gap = this.gap;
+
+    List<Widget>? children = this.children;
 
     if (this.style == null) {
       if (tag != null) {
         style = commonController.getStyle(Get.currentRoute, tag);
       }
 
-      style ??= commonController.getStyle(Get.currentRoute, runtimeType);
+      style ??=
+          commonController.getStyle(Get.currentRoute, runtimeType.toString());
     }
 
     if (style != null) {
@@ -160,9 +174,40 @@ class CWidget extends StatelessWidget {
 
       expanded = expanded ?? style.expanded ?? this.expanded;
       decoration = decoration ?? style.decoration ?? this.decoration;
+      visible = visible ?? style.visible ?? this.visible;
+      borderRadius = borderRadius ?? style.borderRadius ?? this.borderRadius;
+
+      iconMargin = iconMargin ?? style.iconMargin ?? this.iconMargin;
+      rearIconMargin =
+          rearIconMargin ?? style.rearIconMargin ?? this.rearIconMargin;
+
+      gap = gap ?? style.gap ?? this.gap;
+    }
+
+    if (visible == false) {
+      return const SizedBox.shrink();
     }
 
     Widget widget = init(context);
+
+    if (gap != null && children != null) {
+      var items = <Widget>[];
+
+      for (var i = 0; i < children.length; i++) {
+        if (i > 0) {
+          items.add(SizedBox(width: gap, height: gap));
+        }
+
+        items.add(children[i]);
+      }
+
+      children = items;
+    }
+
+    if (children != null) {
+      widget = initChildren(
+          widget, children, mainAxisAlignment, crossAxisAlignment, context);
+    }
 
     if (padding != null) {
       widget = Container(padding: padding, child: widget);
@@ -186,21 +231,26 @@ class CWidget extends StatelessWidget {
     }
 
     if (onTap != null) {
-      widget = GestureDetector(onTap: onTap, child: widget);
+      widget = GestureDetector(
+          behavior: HitTestBehavior.translucent, onTap: onTap, child: widget);
     }
 
     if (icon != null || rearIcon != null) {
       var icons = <Widget>[];
 
+      double width = iconMargin ?? 2;
+
       if (icon != null) {
         icons.add(icon);
-        icons.add(const SizedBox(width: 2));
+        icons.add(SizedBox(width: width));
       }
 
       icons.add(widget);
 
+      width = rearIconMargin ?? 2;
+
       if (rearIcon != null) {
-        icons.add(const SizedBox(width: 2));
+        icons.add(SizedBox(width: width));
         icons.add(rearIcon);
       }
 
@@ -208,6 +258,11 @@ class CWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: icons);
+    }
+
+    if (borderRadius != null) {
+      widget = ClipRRect(
+          borderRadius: BorderRadius.circular(borderRadius), child: widget);
     }
 
     if (backgroundColor != null || margin != null) {

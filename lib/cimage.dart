@@ -1,4 +1,4 @@
-import 'cwidget.dart';
+import 'common_control.dart';
 
 class CImage extends CWidget {
   CImage(
@@ -15,7 +15,11 @@ class CImage extends CWidget {
       super.flex,
       super.expanded,
       super.decoration,
-      super.style});
+      super.visible,
+      super.borderRadius,
+      super.style,
+      super.backgroundColor,
+      super.tag});
 
   final BoxFit? fit;
   final String? hero;

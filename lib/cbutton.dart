@@ -1,4 +1,4 @@
-import 'cwidget.dart';
+import 'common_control.dart';
 
 enum CButtonSize { xsmall, small, normal, large }
 
@@ -17,7 +17,15 @@ class CButton extends CWidget {
       super.margin,
       super.padding,
       super.flex,
-      super.backgroundColor});
+      super.visible,
+      super.borderRadius,
+      super.backgroundColor,
+      super.style,      
+      super.gap,
+      super.onTap,
+      super.expanded,
+      super.decoration,
+      super.tag});
 
   final String text;
   final VoidCallback? onPressed;

@@ -1,10 +1,7 @@
-import 'dart:developer';
+import 'common_control.dart';
 
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'infinite_controller.dart';
 import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
-
-import 'cwidget.dart';
 
 class InfiniteScroll<T> extends CWidget {
   final Widget Function(T, int index) builder;
@@ -77,7 +74,6 @@ class InfiniteScroll<T> extends CWidget {
           }
 
           if (!loading) {
-            log('in listview fetchitem');
             controller.read();
           }
 
