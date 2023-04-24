@@ -107,3 +107,8 @@
 ## 0.0.27
 
 * Fix Expanded, flexible
+
+## 0.0.28
+
+* cfixed bottom -> default padding & margin : 0 
+* cscaffold -> add resizeToAvoidBottomInset property

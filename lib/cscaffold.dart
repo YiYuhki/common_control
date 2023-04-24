@@ -18,7 +18,7 @@ class CScaffold extends CWidget {
   final Widget? bottomNavigationBar;
   final bool extendBodyBehindAppBar;
   final bool safeArea;
-  bool? resizeToAvoidBottomInset;
+  final bool resizeToAvoidBottomInset;
 
   final appbarHeight = const Size.fromHeight(54);
 
@@ -38,10 +38,6 @@ class CScaffold extends CWidget {
 
     if (safeArea == true) {
       body = SafeArea(child: body);
-    }
-
-    if (resizeToAvoidBottomInset == false) {
-      resizeToAvoidBottomInset = false;
     }
 
     if (appBar == null) {
