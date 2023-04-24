@@ -12,7 +12,7 @@ class CFixedBottom extends CWidget {
       super.padding,
       super.border,
       super.flex,
-      super.style,      
+      super.style,
       super.onTap,
       super.expanded,
       super.decoration,
@@ -26,15 +26,13 @@ class CFixedBottom extends CWidget {
 
   @override
   Widget build(BuildContext context) {
-    const fixedBottomPadding = EdgeInsets.all(20);
-
     Widget? body = this.body;
-    EdgeInsetsGeometry padding = super.padding ?? fixedBottomPadding;
+    EdgeInsetsGeometry padding = super.padding ?? const EdgeInsets.all(0);
 
     if (children != null) {
       body = CColumn(children: children!);
-    }    
-      
+    }
+
     Widget widget = CColumn(
         margin: margin,
         width: width,
@@ -52,7 +50,7 @@ class CFixedBottom extends CWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(child: SingleChildScrollView(child: body!)),
-          Container(margin: const EdgeInsets.only(top: 20), child: bottom)
+          Container(child: bottom)
         ]);
 
     return widget;
