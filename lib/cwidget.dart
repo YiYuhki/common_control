@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'ccontroller.dart';
 import 'cdialog.dart';
 import 'style.dart';
@@ -213,14 +214,6 @@ class CWidget extends StatelessWidget {
       widget = Container(padding: padding, child: widget);
     }
 
-    if (flex != null && flex > 0) {
-      widget = Flexible(flex: flex, child: widget);
-    }
-
-    if (expanded != null) {
-      widget = Expanded(child: widget);
-    }
-
     if (border != null) {
       decoration = decoration ?? BoxDecoration(border: border);
     }
@@ -267,6 +260,14 @@ class CWidget extends StatelessWidget {
 
     if (backgroundColor != null || margin != null) {
       widget = Container(color: backgroundColor, margin: margin, child: widget);
+    }
+
+    if (flex != null && flex > 0) {
+      widget = Flexible(flex: flex, child: widget);
+    }
+
+    if (expanded != null) {
+      widget = Expanded(child: widget);
     }
 
     return widget;

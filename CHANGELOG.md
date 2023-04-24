@@ -99,4 +99,11 @@
 ## 0.0.25
 
 * add scroll direction in cscroll by cjh94
-* Fix CWidget.initialize
+
+## 0.0.26
+
+* Fix CScroll scrollDirection
+
+## 0.0.27
+
+* Fix Expanded, flexible

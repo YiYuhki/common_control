@@ -30,8 +30,10 @@ class CScroll extends CWidget {
       MainAxisAlignment? mainAxisAlignment,
       CrossAxisAlignment? crossAxisAlignment,
       BuildContext context) {
+    final scrollDirection = this.scrollDirection ?? Axis.vertical;
+
     return SingleChildScrollView(
-      scrollDirection: scrollDirection ?? Axis.vertical,
+      scrollDirection: scrollDirection,
       child: scrollDirection == Axis.vertical
           ? Column(
               crossAxisAlignment:
