@@ -10,7 +10,10 @@ class CScaffold extends CWidget {
       this.bottomNavigationBar,
       this.extendBodyBehindAppBar = false,
       this.safeArea = true,
-      this.resizeToAvoidBottomInset = true});
+      this.resizeToAvoidBottomInset = true,
+      this.floatingActionButton,
+      this.floatingActionButtonLocation,
+      this.floatingActionButtonAnimator,});
 
   final Widget body;
   final Widget? appBar;
@@ -19,6 +22,9 @@ class CScaffold extends CWidget {
   final bool extendBodyBehindAppBar;
   final bool safeArea;
   final bool resizeToAvoidBottomInset;
+  final Widget? floatingActionButton;
+  final FloatingActionButtonLocation? floatingActionButtonLocation;
+  final FloatingActionButtonAnimator? floatingActionButtonAnimator;
 
   final appbarHeight = const Size.fromHeight(54);
 
@@ -47,7 +53,11 @@ class CScaffold extends CWidget {
           bottomNavigationBar: bottomNavigationBar,
           extendBody: extendBody,
           extendBodyBehindAppBar: extendBodyBehindAppBar,
-          resizeToAvoidBottomInset: resizeToAvoidBottomInset);
+          resizeToAvoidBottomInset: resizeToAvoidBottomInset,
+          floatingActionButton:floatingActionButton,
+          floatingActionButtonLocation:floatingActionButtonLocation,
+          floatingActionButtonAnimator:floatingActionButtonAnimator
+          );
     } else {
       widget = Scaffold(
           backgroundColor: backgroundColor,
@@ -56,7 +66,10 @@ class CScaffold extends CWidget {
           bottomNavigationBar: bottomNavigationBar,
           extendBody: extendBody,
           extendBodyBehindAppBar: extendBodyBehindAppBar,
-          resizeToAvoidBottomInset: resizeToAvoidBottomInset);
+          resizeToAvoidBottomInset: resizeToAvoidBottomInset,
+          floatingActionButton:floatingActionButton,
+          floatingActionButtonLocation:floatingActionButtonLocation,
+          floatingActionButtonAnimator:floatingActionButtonAnimator);
     }
 
     if (autoLostFocus != null && autoLostFocus == true) {
