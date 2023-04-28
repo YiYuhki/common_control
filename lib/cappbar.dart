@@ -1,5 +1,4 @@
 import 'common_control.dart';
-import 'package:flutter/cupertino.dart';
 
 class CAppBar extends CWidget {
   CAppBar(
@@ -7,19 +6,22 @@ class CAppBar extends CWidget {
       required this.title,
       this.onPressed,
       this.backButton = true,
+      this.backButtonImage,
       this.action,
       this.onActioned});
 
   final String title;
   final VoidCallback? onPressed;
   final bool backButton;
+  final String? backButtonImage;
   final String? action;
   final VoidCallback? onActioned;
 
   @override
   Widget init(BuildContext context) {
     const grey400 = Color(0xffBDBDBD);
-    const appbarTitleTextStyle = TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xff212121));
+    const appbarTitleTextStyle = TextStyle(
+        fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xff212121));
 
     return AppBar(
         bottom: PreferredSize(
@@ -37,9 +39,11 @@ class CAppBar extends CWidget {
                     onPressed!();
                   }
                 },
-                icon: const Icon(CupertinoIcons.back)
+                icon: CSvg(
+                  backButtonImage!,
+                ),
               )
-            : null,
+            : Container(),
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
@@ -51,7 +55,7 @@ class CAppBar extends CWidget {
                     child: IconButton(
                         padding: EdgeInsets.zero,
                         constraints: const BoxConstraints(),
-                        icon: CSvg(action!, width: 32, height: 32),
+                        icon: CSvg(action!, width: 16, height: 16),
                         onPressed: () {
                           if (onActioned == null) {
                             Get.back();
