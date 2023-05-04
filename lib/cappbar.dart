@@ -19,7 +19,7 @@ class CAppBar extends CWidget {
 
   @override
   Widget init(BuildContext context) {
-    const grey400 = Color(0xffBDBDBD);
+    const grey400 = Color(0xffE0E0E0);
     const appbarTitleTextStyle = TextStyle(
         fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xff212121));
 
