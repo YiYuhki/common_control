@@ -112,3 +112,15 @@
 
 * cfixed bottom -> default padding & margin : 0 
 * cscaffold -> add resizeToAvoidBottomInset property
+
+## 0.0.29
+
+* Add CScaffold - floatingActionButton by supersy0215
+
+## 0.0.30
+
+* Modify CAppBar by gimsugyeom
+
+## 0.0.31
+
+* Modify CAppBar by gimsugyeom
