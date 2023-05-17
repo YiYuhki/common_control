@@ -124,3 +124,7 @@
 ## 0.0.31
 
 * Modify CAppBar by gimsugyeom
+
+## 0.0.32
+
+* Modify CAppBar icon size by gimsugyeom
