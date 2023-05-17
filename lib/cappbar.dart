@@ -8,6 +8,8 @@ class CAppBar extends CWidget {
       this.backButton = true,
       this.backButtonImage,
       this.action,
+      this.actionWidth,
+      this.actionHeight,
       this.onActioned});
 
   final String title;
@@ -15,6 +17,8 @@ class CAppBar extends CWidget {
   final bool backButton;
   final String? backButtonImage;
   final String? action;
+  final double? actionWidth;
+  final double? actionHeight;
   final VoidCallback? onActioned;
 
   @override
@@ -22,6 +26,11 @@ class CAppBar extends CWidget {
     const grey400 = Color(0xffE0E0E0);
     const appbarTitleTextStyle = TextStyle(
         fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xff212121));
+
+    // if (action == "assets/imgs/icon_close.svg") {
+    //   16;
+    //   actionHeight :16;
+    // }
 
     return AppBar(
         bottom: PreferredSize(
@@ -55,7 +64,13 @@ class CAppBar extends CWidget {
                     child: IconButton(
                         padding: EdgeInsets.zero,
                         constraints: const BoxConstraints(),
-                        icon: CSvg(action!, width: 16, height: 16),
+                        icon: CSvg(action!,
+                            width: action == "assets/imgs/icon_close.svg"
+                                ? 16
+                                : actionWidth,
+                            height: action == "assets/imgs/icon_close.svg"
+                                ? 16
+                                : actionHeight),
                         onPressed: () {
                           if (onActioned == null) {
                             Get.back();
