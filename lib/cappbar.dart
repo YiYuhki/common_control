@@ -65,12 +65,7 @@ class CAppBar extends CWidget {
                         padding: EdgeInsets.zero,
                         constraints: const BoxConstraints(),
                         icon: CSvg(action!,
-                            width: action == "assets/imgs/icon_close.svg"
-                                ? 16
-                                : actionWidth,
-                            height: action == "assets/imgs/icon_close.svg"
-                                ? 16
-                                : actionHeight),
+                            width: actionWidth, height: actionHeight),
                         onPressed: () {
                           if (onActioned == null) {
                             Get.back();
