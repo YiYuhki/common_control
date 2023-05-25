@@ -45,16 +45,17 @@ class CTextField extends CWidget {
   final String? svg;
 
   @override
-  Widget init(BuildContext context) {    
+  Widget init(BuildContext context) {
     double height = 48;
-    
-    const grey700 = Color(0xff616161);    
+
+    const grey700 = Color(0xff616161);
     const grey400 = Color(0xffBDBDBD);
-    const grey300 = Color(0xffE0E0E0);    
+    const grey300 = Color(0xffE0E0E0);
     const grey50 = Color(0xffFAFAFA);
-    const hintText = TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: grey400);
-    const errorText = TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: Color(0xffff6262));
-  
+    const hintText =
+        TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: grey400);
+    const errorText = TextStyle(
+        fontSize: 12, fontWeight: FontWeight.w400, color: Color(0xffff6262));
 
     var disabledFillColor = grey50;
 
@@ -117,7 +118,7 @@ class CTextField extends CWidget {
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8.0),
-                    borderSide: const BorderSide(color: grey400),
+                    borderSide: const BorderSide(color: grey300),
                   ),
                 ))),
         errText == '' || errText == null
@@ -127,8 +128,7 @@ class CTextField extends CWidget {
                   const SizedBox(
                     height: 6,
                   ),
-                  Text(errText.toString(),
-                      style: errorText),
+                  Text(errText.toString(), style: errorText),
                 ],
               ),
       ],
