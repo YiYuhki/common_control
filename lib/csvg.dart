@@ -25,12 +25,16 @@ class CSvg extends CWidget {
 
   @override
   Widget init(BuildContext context) {
-    Widget widget = SvgPicture.asset(
-      filename,
-      width: width,
-      height: height,
-      color: color,
-    );
+    ColorFilter? colorFilter;
+  
+    if (color != null) {
+      colorFilter = ColorFilter.mode(color!, BlendMode.srcIn);
+    }
+    
+    Widget widget = SvgPicture.asset(filename,
+        width: width,
+        height: height,
+        colorFilter: colorFilter);
 
     return widget;
   }

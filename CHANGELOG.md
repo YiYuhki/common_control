@@ -128,3 +128,11 @@
 ## 0.0.32
 
 * Modify CAppBar icon size by gimsugyeom
+
+## 0.0.33
+
+* Modify InfiniteScroll params 
+
+## 0.0.34
+
+* Modify CTextField : enable border color by gimsugyeom

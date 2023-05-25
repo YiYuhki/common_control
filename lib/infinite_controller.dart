@@ -11,7 +11,7 @@ class InfiniteController extends GetxController {
   final _page = 1.obs;
 
   final ItemReader reader;
-  final String params;
+  String params;
 
   InfiniteController({required this.reader, required this.params});
 
