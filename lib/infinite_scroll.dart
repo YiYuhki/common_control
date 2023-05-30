@@ -7,12 +7,14 @@ class InfiniteScroll<T> extends CWidget {
   final Widget Function(T, int index) builder;
   final InfiniteController controller;
   final String? params;
+  final Axis axis;
 
   InfiniteScroll(
       {super.key,
       required this.builder,
       required this.controller,
       this.params,
+      required this.axis,
       super.width,
       super.height,
       super.margin,
@@ -23,8 +25,7 @@ class InfiniteScroll<T> extends CWidget {
       super.onTap,
       super.icon,
       super.rearIcon,
-      super.backgroundColor
-      });
+      super.backgroundColor});
 
   @override
   Widget init(context) {
@@ -34,9 +35,9 @@ class InfiniteScroll<T> extends CWidget {
       builder: MaterialIndicatorDelegate(
         builder: (context, controller) {
           return const Center(
-          child: SpinKitThreeBounce(
-            color: grey800,
-            size: 15,
+            child: SpinKitThreeBounce(
+              color: grey800,
+              size: 15,
             ),
           );
         },
@@ -62,7 +63,7 @@ class InfiniteScroll<T> extends CWidget {
     }
 
     return ListView.builder(
-        // shrinkWrap: true,
+        scrollDirection: axis,
         itemCount: cache.length + 1,
         itemBuilder: (context, index) {
           if (index < cache.length) {
