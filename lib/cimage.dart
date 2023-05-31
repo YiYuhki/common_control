@@ -19,6 +19,7 @@ class CImage extends CWidget {
       super.borderRadius,
       super.style,
       super.backgroundColor,
+      super.alignment,
       super.tag});
 
   final BoxFit? fit;

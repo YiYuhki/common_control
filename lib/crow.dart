@@ -10,6 +10,7 @@ class CRow extends CWidget {
       super.padding,
       super.crossAxisAlignment,
       super.mainAxisAlignment,
+      super.alignment,
       super.border,
       super.flex,
       super.style,
@@ -23,7 +24,7 @@ class CRow extends CWidget {
       super.tag});  
 
   @override
-  Widget initChildren(Widget widget, List<Widget> children, MainAxisAlignment? mainAxisAlignment, CrossAxisAlignment? crossAxisAlignment, BuildContext context) {
+  Widget initChildren(Widget widget, List<Widget> children, MainAxisAlignment? mainAxisAlignment, CrossAxisAlignment? crossAxisAlignment, Alignment? alignment, BuildContext context) {
     return Row(
         crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
         mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,

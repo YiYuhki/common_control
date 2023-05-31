@@ -24,6 +24,7 @@ class CText extends CWidget {
       this.softWrap,
       super.iconMargin,
       super.rearIconMargin,
+      super.alignment,
       super.tag});
 
   final String text;

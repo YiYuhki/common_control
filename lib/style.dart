@@ -12,6 +12,7 @@ class Style {
       this.backgroundColor,
       this.crossAxisAlignment,
       this.mainAxisAlignment,
+      this.alignment,
       this.icon,
       this.rearIcon,
       this.expanded,
@@ -33,6 +34,7 @@ class Style {
 
   final CrossAxisAlignment? crossAxisAlignment;
   final MainAxisAlignment? mainAxisAlignment;
+  final Alignment? alignment;
 
   final Widget? icon;
   final Widget? rearIcon;

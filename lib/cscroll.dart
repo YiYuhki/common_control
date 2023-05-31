@@ -10,6 +10,7 @@ class CScroll extends CWidget {
       super.padding,
       super.crossAxisAlignment,
       super.mainAxisAlignment,
+      super.alignment,
       super.border,
       super.flex,
       super.style,
@@ -29,6 +30,7 @@ class CScroll extends CWidget {
       List<Widget> children,
       MainAxisAlignment? mainAxisAlignment,
       CrossAxisAlignment? crossAxisAlignment,
+      Alignment? alignment,
       BuildContext context) {
     final scrollDirection = this.scrollDirection ?? Axis.vertical;
 

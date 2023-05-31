@@ -56,6 +56,7 @@ class CWidget extends StatelessWidget {
 
   final CrossAxisAlignment? crossAxisAlignment;
   final MainAxisAlignment? mainAxisAlignment;
+  final Alignment? alignment;
 
   final Decoration? decoration;
 
@@ -76,6 +77,7 @@ class CWidget extends StatelessWidget {
       List<Widget> children,
       MainAxisAlignment? mainAxisAlignment,
       CrossAxisAlignment? crossAxisAlignment,
+      Alignment? alignment,
       BuildContext context) {
     return widget;
   }
@@ -137,6 +139,7 @@ class CWidget extends StatelessWidget {
 
     CrossAxisAlignment? crossAxisAlignment = this.crossAxisAlignment;
     MainAxisAlignment? mainAxisAlignment = this.mainAxisAlignment;
+    Alignment? alignment = this.alignment;
 
     Color? backgroundColor = this.backgroundColor;
     Style? style = this.style;
@@ -169,6 +172,7 @@ class CWidget extends StatelessWidget {
       mainAxisAlignment = mainAxisAlignment ??
           style.mainAxisAlignment ??
           this.mainAxisAlignment;
+      alignment = alignment ?? style.alignment ?? this.alignment;
 
       icon = icon ?? style.icon ?? this.icon;
       rearIcon = rearIcon ?? style.rearIcon ?? this.rearIcon;
@@ -206,12 +210,12 @@ class CWidget extends StatelessWidget {
     }
 
     if (children != null) {
-      widget = initChildren(
-          widget, children, mainAxisAlignment, crossAxisAlignment, context);
+      widget = initChildren(widget, children, mainAxisAlignment,
+          crossAxisAlignment, alignment, context);
     }
 
-    if (padding != null) {
-      widget = Container(padding: padding, child: widget);
+    if (padding != null || alignment != null) {
+      widget = Container(padding: padding, child: widget, alignment: alignment);
     }
 
     if (border != null) {

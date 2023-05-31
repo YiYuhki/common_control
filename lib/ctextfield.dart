@@ -30,6 +30,7 @@ class CTextField extends CWidget {
       super.visible,
       super.borderRadius,
       super.backgroundColor,
+      super.alignment,
       super.tag});
 
   final bool? disabled;

@@ -18,6 +18,7 @@ class CSvg extends CWidget {
       super.borderRadius,
       super.onTap,
       super.backgroundColor,
+      super.alignment,
       super.tag});
 
   final String filename;

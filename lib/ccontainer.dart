@@ -4,6 +4,7 @@ class CContainer extends CWidget {
   CContainer(
       {super.key,
       required this.child,
+      super.alignment,
       super.margin,
       super.width,
       super.height,
@@ -23,7 +24,7 @@ class CContainer extends CWidget {
 
   @override
   Widget init(BuildContext context) {
-    Widget widget = Container(child: child);
+    Widget widget = Container(alignment: alignment, child: child);
 
     return widget;
   }
