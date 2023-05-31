@@ -23,6 +23,7 @@ class CWidget extends StatelessWidget {
       this.rearIcon,
       this.crossAxisAlignment,
       this.mainAxisAlignment,
+      this.alignment,
       this.decoration,
       this.visible,
       this.borderRadius,
@@ -215,7 +216,7 @@ class CWidget extends StatelessWidget {
     }
 
     if (padding != null || alignment != null) {
-      widget = Container(padding: padding, child: widget, alignment: alignment);
+      widget = Container(padding: padding, alignment: alignment, child: widget);
     }
 
     if (border != null) {

@@ -136,3 +136,7 @@
 ## 0.0.34
 
 * Modify CTextField : enable border color by gimsugyeom
+
+## 0.0.35
+
+* Add Infinite scroll axis by gimsugyeom

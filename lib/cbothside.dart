@@ -10,6 +10,7 @@ class CBothSide extends CWidget {
       super.padding,
       super.crossAxisAlignment,
       super.mainAxisAlignment,
+      super.alignment,
       super.border,
       super.flex,
       super.style,
@@ -22,7 +23,7 @@ class CBothSide extends CWidget {
       super.backgroundColor});
   
   @override
-  Widget initChildren(Widget widget, List<Widget> children, MainAxisAlignment? mainAxisAlignment, CrossAxisAlignment? crossAxisAlignment, BuildContext context) {
+  Widget initChildren(Widget widget, List<Widget> children, MainAxisAlignment? mainAxisAlignment, CrossAxisAlignment? crossAxisAlignment, Alignment? alignment, BuildContext context) {
     return Row(
         crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
         mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.spaceBetween,
