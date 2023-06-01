@@ -74,6 +74,11 @@ class InfiniteController extends GetxController {
     _page.value++;
 
     _loading.value = false;
+
+    onReadEnd();
+  }
+
+  onReadEnd() {
   }
 
   get(int index) {

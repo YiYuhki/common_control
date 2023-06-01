@@ -140,3 +140,7 @@
 ## 0.0.35
 
 * Add Infinite scroll axis by gimsugyeom
+
+## 0.0.36
+
+* Add InfiniteController onReadEnd event callback
