@@ -144,3 +144,15 @@
 ## 0.0.36
 
 * Add InfiniteController onReadEnd event callback
+
+## 0.0.37
+
+* Add InfiniteController items
+
+## 0.0.38
+
+* Add textfield maxline by gimsugyeom
+
+## 0.0.39
+
+* Add textfield maxline by gimsugyeom

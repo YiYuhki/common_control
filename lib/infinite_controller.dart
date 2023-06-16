@@ -10,6 +10,9 @@ class InfiniteController extends GetxController {
   final _pagesize = 20;
   final _page = 1.obs;
 
+  get items => _cache;
+  set items(value) => _cache.value = value;
+
   final ItemReader reader;
   String params;
 
@@ -78,8 +81,7 @@ class InfiniteController extends GetxController {
     onReadEnd();
   }
 
-  onReadEnd() {
-  }
+  onReadEnd() {}
 
   get(int index) {
     return _cache[index];
