@@ -156,3 +156,7 @@
 ## 0.0.39
 
 * Add textfield maxline by gimsugyeom
+
+## 0.0.40
+
+* Add textfield maxline by gimsugyeom
