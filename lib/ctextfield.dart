@@ -74,58 +74,64 @@ class CTextField extends CWidget {
         onPressed: null,
       );
     }
+    var textfield = TextField(
+        maxLines: maxLines,
+        onChanged: (value) {
+          if (onChanged != null) {
+            onChanged!(value);
+          }
+        },
+        readOnly: readOnly ?? false ? true : false,
+        keyboardType: type == CTextFieldType.number
+            ? TextInputType.number
+            : maxLines == 1
+                ? TextInputType.text
+                : TextInputType.multiline,
+        inputFormatters: type == CTextFieldType.number
+            ? [FilteringTextInputFormatter.allow(RegExp('[0-9]'))]
+            : [],
+        cursorColor: grey300,
+        controller: controller,
+        focusNode: focusNode,
+        obscureText: obscure ?? false ? true : false,
+        enabled: disabled ?? false ? false : true,
+        decoration: InputDecoration(
+          isDense: true,
+          filled: disabled ?? false ? true : false,
+          fillColor: disabledFillColor,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          hintText: text,
+          hintStyle: hintText,
+          prefixIcon: icon,
+          disabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8.0),
+              borderSide: BorderSide(
+                  color: disabledtype == CTextFieldDisabledType.fill
+                      ? disabledFillColor
+                      : grey400)),
+          focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: grey700),
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.0),
+            borderSide: const BorderSide(color: grey300),
+          ),
+        ));
+
+    if (maxLines == 1) {
+      SizedBox(
+        height: height,
+        child: textfield,
+      );
+    }
 
     Widget widget = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
-            height: height,
-            child: TextField(
-                maxLines: maxLines,
-                onChanged: (value) {
-                  if (onChanged != null) {
-                    onChanged!(value);
-                  }
-                },
-                readOnly: readOnly ?? false ? true : false,
-                keyboardType: type == CTextFieldType.number
-                    ? TextInputType.number
-                    : maxLines == 1
-                        ? TextInputType.text
-                        : TextInputType.multiline,
-                inputFormatters: type == CTextFieldType.number
-                    ? [FilteringTextInputFormatter.allow(RegExp('[0-9]'))]
-                    : [],
-                cursorColor: grey300,
-                controller: controller,
-                focusNode: focusNode,
-                obscureText: obscure ?? false ? true : false,
-                enabled: disabled ?? false ? false : true,
-                decoration: InputDecoration(
-                  isDense: true,
-                  filled: disabled ?? false ? true : false,
-                  fillColor: disabledFillColor,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  hintText: text,
-                  hintStyle: hintText,
-                  prefixIcon: icon,
-                  disabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                      borderSide: BorderSide(
-                          color: disabledtype == CTextFieldDisabledType.fill
-                              ? disabledFillColor
-                              : grey400)),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: grey700),
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                    borderSide: const BorderSide(color: grey300),
-                  ),
-                ))),
+        textfield,
         errText == '' || errText == null
             ? const SizedBox.shrink()
             : Column(
