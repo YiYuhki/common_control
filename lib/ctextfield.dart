@@ -8,6 +8,7 @@ enum CTextFieldDisabledType { fill, outline }
 class CTextField extends CWidget {
   CTextField(
       {super.key,
+      this.maxLines,
       this.disabled,
       this.obscure,
       this.readOnly,
@@ -33,6 +34,7 @@ class CTextField extends CWidget {
       super.alignment,
       super.tag});
 
+  final int? maxLines;
   final bool? disabled;
   final bool? obscure;
   final bool? readOnly;
@@ -79,7 +81,7 @@ class CTextField extends CWidget {
         SizedBox(
             height: height,
             child: TextField(
-                maxLines: 1,
+                maxLines: maxLines,
                 onChanged: (value) {
                   if (onChanged != null) {
                     onChanged!(value);
