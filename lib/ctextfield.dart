@@ -90,7 +90,9 @@ class CTextField extends CWidget {
                 readOnly: readOnly ?? false ? true : false,
                 keyboardType: type == CTextFieldType.number
                     ? TextInputType.number
-                    : TextInputType.text,
+                    : maxLines == 1
+                        ? TextInputType.text
+                        : TextInputType.multiline,
                 inputFormatters: type == CTextFieldType.number
                     ? [FilteringTextInputFormatter.allow(RegExp('[0-9]'))]
                     : [],
