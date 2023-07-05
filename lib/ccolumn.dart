@@ -10,6 +10,7 @@ class CColumn extends CWidget {
       super.padding,
       super.crossAxisAlignment,
       super.mainAxisAlignment,
+      super.mainAxisSize,
       super.alignment,
       super.border,
       super.flex,
@@ -29,11 +30,13 @@ class CColumn extends CWidget {
       List<Widget> children,
       MainAxisAlignment? mainAxisAlignment,
       CrossAxisAlignment? crossAxisAlignment,
+      MainAxisSize? mainAxisSize,
       Alignment? alignment,
       BuildContext context) {
     return Column(
         crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
         mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
+        mainAxisSize: mainAxisSize ?? MainAxisSize.max,
         children: children);
   }
 }

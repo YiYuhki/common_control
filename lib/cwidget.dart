@@ -23,6 +23,7 @@ class CWidget extends StatelessWidget {
       this.rearIcon,
       this.crossAxisAlignment,
       this.mainAxisAlignment,
+      this.mainAxisSize,
       this.alignment,
       this.decoration,
       this.visible,
@@ -57,6 +58,7 @@ class CWidget extends StatelessWidget {
 
   final CrossAxisAlignment? crossAxisAlignment;
   final MainAxisAlignment? mainAxisAlignment;
+  final MainAxisSize? mainAxisSize;
   final Alignment? alignment;
 
   final Decoration? decoration;
@@ -78,6 +80,7 @@ class CWidget extends StatelessWidget {
       List<Widget> children,
       MainAxisAlignment? mainAxisAlignment,
       CrossAxisAlignment? crossAxisAlignment,
+      MainAxisSize? mainAxisSize,
       Alignment? alignment,
       BuildContext context) {
     return widget;
@@ -140,6 +143,7 @@ class CWidget extends StatelessWidget {
 
     CrossAxisAlignment? crossAxisAlignment = this.crossAxisAlignment;
     MainAxisAlignment? mainAxisAlignment = this.mainAxisAlignment;
+    MainAxisSize? mainAxisSize = this.mainAxisSize;
     Alignment? alignment = this.alignment;
 
     Color? backgroundColor = this.backgroundColor;
@@ -173,6 +177,7 @@ class CWidget extends StatelessWidget {
       mainAxisAlignment = mainAxisAlignment ??
           style.mainAxisAlignment ??
           this.mainAxisAlignment;
+      mainAxisSize = mainAxisSize ?? style.mainAxisSize ?? this.mainAxisSize;
       alignment = alignment ?? style.alignment ?? this.alignment;
 
       icon = icon ?? style.icon ?? this.icon;
@@ -212,7 +217,7 @@ class CWidget extends StatelessWidget {
 
     if (children != null) {
       widget = initChildren(widget, children, mainAxisAlignment,
-          crossAxisAlignment, alignment, context);
+          crossAxisAlignment, mainAxisSize, alignment, context);
     }
 
     if (padding != null || alignment != null) {
@@ -255,6 +260,7 @@ class CWidget extends StatelessWidget {
       widget = Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
           children: icons);
     }
 
