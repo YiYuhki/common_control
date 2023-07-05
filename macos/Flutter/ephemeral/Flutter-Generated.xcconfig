@@ -1,10 +1,10 @@
 // This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=/Users/juhee/Desktop/flutter
-FLUTTER_APPLICATION_PATH=/Users/juhee/Desktop/common_control
+FLUTTER_ROOT=/usr/local/flutter
+FLUTTER_APPLICATION_PATH=/Users/yuhki/program/common_control
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_BUILD_DIR=build
-FLUTTER_BUILD_NAME=0.0.6
-FLUTTER_BUILD_NUMBER=0.0.6
+FLUTTER_BUILD_NAME=0.0.40
+FLUTTER_BUILD_NUMBER=0.0.40
 DART_OBFUSCATION=false
 TRACK_WIDGET_CREATION=true
 TREE_SHAKE_ICONS=false
