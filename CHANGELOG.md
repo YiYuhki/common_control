@@ -160,3 +160,7 @@
 ## 0.0.40
 
 * Add textfield maxline by gimsugyeom
+
+## 0.0.41
+
+* Add CSnackbar by cjh94
