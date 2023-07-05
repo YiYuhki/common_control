@@ -25,13 +25,15 @@ class CText extends CWidget {
       super.iconMargin,
       super.rearIconMargin,
       super.alignment,
-      super.tag});
+      super.tag,
+      this.textAlign});
 
   final String text;
   final TextStyle? textStyle;
   final TextOverflow? overflow;
   final int? maxLines;
   final bool? softWrap;
+  final TextAlign? textAlign;
 
   @override
   Widget init(BuildContext context) {
@@ -50,7 +52,14 @@ class CText extends CWidget {
       textStyle = textStyle ?? style?.textStyle;
     }
 
-    Widget widget = Text(text, style: textStyle, overflow: overflow, maxLines: maxLines, softWrap: softWrap);
+    Widget widget = Text(
+      text,
+      style: textStyle,
+      overflow: overflow,
+      maxLines: maxLines,
+      softWrap: softWrap,
+      textAlign: textAlign,
+    );
 
     return widget;
   }
