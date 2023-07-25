@@ -8,6 +8,7 @@ class InfiniteScroll<T> extends CWidget {
   final InfiniteController controller;
   final String? params;
   final Axis axis;
+  final Widget? empty;
 
   InfiniteScroll(
       {super.key,
@@ -25,7 +26,8 @@ class InfiniteScroll<T> extends CWidget {
       super.onTap,
       super.icon,
       super.rearIcon,
-      super.backgroundColor});
+      super.backgroundColor,
+      this.empty});
 
   @override
   Widget init(context) {
@@ -58,6 +60,9 @@ class InfiniteScroll<T> extends CWidget {
       if (loading) {
         return Container();
       } else {
+        if (empty != null) {
+          return empty!;
+        }
         return const Center(child: Text('아이템이 없습니다'));
       }
     }
