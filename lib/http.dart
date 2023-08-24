@@ -43,7 +43,7 @@ class Http {
       var result = await http.get(Uri.parse(url),
           headers: {'Authorization': 'Bearer ${config.token}'});
       if (result.statusCode == 200) {
-        final parsed = json.decode(result.body);
+        final parsed = json.decode(utf8.decode(result.bodyBytes));
         return parsed;
       }
     } catch (e) {
@@ -66,7 +66,7 @@ class Http {
           },
           body: jsonEncode(item));
       if (result.statusCode == 200) {
-        return json.decode(result.body);
+        return json.decode(utf8.decode(result.bodyBytes));
       }
     } catch (e) {
       if (kDebugMode) {
@@ -88,7 +88,7 @@ class Http {
           },
           body: jsonEncode(item));
       if (result.statusCode == 200) {
-        final parsed = json.decode(result.body);
+        final parsed = json.decode(utf8.decode(result.bodyBytes));
         return parsed["id"];
       }
     } catch (e) {
@@ -154,7 +154,7 @@ class Http {
     var responsed = await http.Response.fromStream(response);
 
     if (response.statusCode == 200) {
-      var responseData = await json.decode(responsed.body);
+      var responseData = await json.decode(utf8.decode(responsed.bodyBytes));
 
       return responseData['filename'];
     }

@@ -172,3 +172,7 @@
 ## 0.0.43
 
 * Add Infinite Scroll empty widget by gimsugyeom
+
+## 0.0.44
+
+* Fix UTF-8 json decode error
