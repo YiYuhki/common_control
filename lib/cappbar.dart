@@ -27,11 +27,6 @@ class CAppBar extends CWidget {
     const appbarTitleTextStyle = TextStyle(
         fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xff212121));
 
-    // if (action == "assets/imgs/icon_close.svg") {
-    //   16;
-    //   actionHeight :16;
-    // }
-
     return AppBar(
         bottom: PreferredSize(
             preferredSize: const Size.fromHeight(4.0),
