@@ -33,6 +33,7 @@ class CAppBar extends CWidget {
     // }
 
     return AppBar(
+        surfaceTintColor: Colors.white,
         bottom: PreferredSize(
             preferredSize: const Size.fromHeight(4.0),
             child: Container(
