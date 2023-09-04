@@ -180,3 +180,7 @@
 ## 0.0.45
 
 * CAppbar sdd urfaceTinColor by gimsugyeom
+
+## 0.0.46
+
+* CAppbar modify action button by gimsugyeom
