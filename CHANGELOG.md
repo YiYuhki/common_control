@@ -176,3 +176,7 @@
 ## 0.0.44
 
 * Fix UTF-8 json decode error
+
+## 0.0.45
+
+* CAppbar sdd urfaceTinColor by gimsugyeom
