@@ -33,7 +33,6 @@ class CAppBar extends CWidget {
     // }
 
     return AppBar(
-        surfaceTintColor: Colors.white,
         bottom: PreferredSize(
             preferredSize: const Size.fromHeight(4.0),
             child: Container(
@@ -55,25 +54,24 @@ class CAppBar extends CWidget {
               )
             : Container(),
         backgroundColor: Colors.white,
+        surfaceTintColor: Colors.white,
         elevation: 0,
         centerTitle: true,
         title: Text(title, style: appbarTitleTextStyle),
         actions: action != null
             ? [
-                Container(
-                    margin: const EdgeInsets.only(right: 20),
-                    child: IconButton(
-                        padding: EdgeInsets.zero,
-                        constraints: const BoxConstraints(),
-                        icon: CSvg(action!,
-                            width: actionWidth, height: actionHeight),
-                        onPressed: () {
-                          if (onActioned == null) {
-                            Get.back();
-                          } else {
-                            onActioned!();
-                          }
-                        }))
+                IconButton(
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
+                    icon:
+                        CSvg(action!, width: actionWidth, height: actionHeight),
+                    onPressed: () {
+                      if (onActioned == null) {
+                        Get.back();
+                      } else {
+                        onActioned!();
+                      }
+                    })
               ]
             : []);
   }
