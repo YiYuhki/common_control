@@ -56,7 +56,7 @@ class CTextField extends CWidget {
     const grey300 = Color(0xffE0E0E0);
     const grey50 = Color(0xffFAFAFA);
     const hintText =
-        TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: grey400);
+        TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: grey400);
     const errorText = TextStyle(
         fontSize: 12, fontWeight: FontWeight.w400, color: Color(0xffff6262));
 
@@ -66,84 +66,67 @@ class CTextField extends CWidget {
 
     if (svg != null) {
       icon = IconButton(
-        icon: CSvg(
-          svg!,
-          width: 24,
-          height: 24,
-        ),
+        icon: CSvg(svg!, width: 24, height: 24),
         onPressed: null,
       );
     }
-    var textfield = TextField(
-        maxLines: maxLines,
-        onChanged: (value) {
-          if (onChanged != null) {
-            onChanged!(value);
-          }
-        },
-        readOnly: readOnly ?? false ? true : false,
-        keyboardType: type == CTextFieldType.number
-            ? TextInputType.number
-            : maxLines == 1
-                ? TextInputType.text
-                : TextInputType.multiline,
-        inputFormatters: type == CTextFieldType.number
-            ? [FilteringTextInputFormatter.allow(RegExp('[0-9]'))]
-            : [],
-        cursorColor: grey300,
-        controller: controller,
-        focusNode: focusNode,
-        obscureText: obscure ?? false ? true : false,
-        enabled: disabled ?? false ? false : true,
-        decoration: InputDecoration(
-          isDense: true,
-          filled: disabled ?? false ? true : false,
-          fillColor: disabledFillColor,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-          hintText: text,
-          hintStyle: hintText,
-          prefixIcon: icon,
-          disabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8.0),
-              borderSide: BorderSide(
-                  color: disabledtype == CTextFieldDisabledType.fill
-                      ? disabledFillColor
-                      : grey400)),
-          focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: grey700),
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.0),
-            borderSide: const BorderSide(color: grey300),
-          ),
-        ));
 
-    if (maxLines == 1) {
-      SizedBox(
-        height: height,
-        child: textfield,
-      );
-    }
-
-    Widget widget = Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        textfield,
-        errText == '' || errText == null
-            ? const SizedBox.shrink()
-            : Column(
-                children: [
-                  const SizedBox(
-                    height: 6,
-                  ),
-                  Text(errText.toString(), style: errorText),
-                ],
-              ),
-      ],
+    var textfield = SizedBox(
+      height: maxLines == null || maxLines == 1 ? height : maxLines! * height,
+      child: TextField(
+          maxLines: maxLines ?? 1,
+          onChanged: (value) {
+            if (onChanged != null) {
+              onChanged!(value);
+            }
+          },
+          readOnly: readOnly ?? false ? true : false,
+          keyboardType: type == CTextFieldType.number
+              ? TextInputType.number
+              : maxLines == 1
+                  ? TextInputType.text
+                  : TextInputType.multiline,
+          inputFormatters: type == CTextFieldType.number
+              ? [FilteringTextInputFormatter.allow(RegExp('[0-9]'))]
+              : [],
+          cursorColor: grey300,
+          controller: controller,
+          focusNode: focusNode,
+          obscureText: obscure ?? false ? true : false,
+          enabled: disabled ?? false ? false : true,
+          decoration: InputDecoration(
+              isDense: true,
+              filled: disabled ?? false ? true : false,
+              fillColor: disabledFillColor,
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+              hintText: text,
+              hintStyle: hintText,
+              prefixIcon: icon,
+              disabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                  borderSide: BorderSide(
+                      color: disabledtype == CTextFieldDisabledType.fill
+                          ? disabledFillColor
+                          : grey400)),
+              focusedBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(color: grey700),
+                  borderRadius: BorderRadius.circular(8.0)),
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                  borderSide: const BorderSide(color: grey300)))),
     );
+
+    Widget widget =
+        Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      textfield,
+      errText == '' || errText == null
+          ? const SizedBox.shrink()
+          : Column(children: [
+              const SizedBox(height: 6),
+              Text(errText.toString(), style: errorText)
+            ])
+    ]);
 
     return widget;
   }
