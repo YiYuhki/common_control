@@ -23,9 +23,11 @@ class CDialog extends CWidget {
   final VoidCallback? onPressed;
   final VoidCallback? onCanceled;
 
-  Future<dynamic> show() {      
-    const dialogTitleTextStyle = TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xff212121));
-    const style = TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Color(0xff616161));
+  Future<dynamic> show() {
+    const dialogTitleTextStyle = TextStyle(
+        fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xff212121));
+    const style = TextStyle(
+        fontSize: 14, fontWeight: FontWeight.w400, color: Color(0xff616161));
 
     var buttons = <Widget>[];
 
@@ -61,6 +63,7 @@ class CDialog extends CWidget {
     return Get.dialog(
       barrierDismissible: false,
       AlertDialog(
+        surfaceTintColor: Colors.white,
         contentPadding:
             const EdgeInsets.symmetric(vertical: 40, horizontal: 24),
         shape: RoundedRectangleBorder(
