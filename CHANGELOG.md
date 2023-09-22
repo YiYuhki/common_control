@@ -196,3 +196,7 @@
 ## 0.0.49
 
 * Cdialog add surfaceTintColor by gimsugyeom
+
+## 0.0.50
+
+* Add CSvg fit by cjh94
