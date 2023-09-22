@@ -1,11 +1,11 @@
 name: common_control
 description: A new widget to replace the default widget
-version: 0.0.46
+version: 0.0.49
 homepage: https://github.com/YiYuhki
 repository: https://github.com/YiYuhki/common_control
 
 environment:
-  sdk: ">=2.19.6 <3.0.0"
+  sdk: ">=2.19.6 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:

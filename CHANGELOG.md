@@ -184,3 +184,15 @@
 ## 0.0.46
 
 * CAppbar modify action button by gimsugyeom
+
+## 0.0.47
+
+* Fix Modified Cimage so that an error does not occur when imageurl is blank.
+
+## 0.0.48
+
+* Modify CTextfield height by gimsugyeom
+
+## 0.0.49
+
+* Cdialog add surfaceTintColor by gimsugyeom

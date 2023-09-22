@@ -35,6 +35,11 @@ class CImage extends CWidget {
     }
 
     width = width ?? double.infinity;
+
+    if (image == '') {
+      return Container(width: width, height: height);
+    }
+        
     final fit = this.fit ?? BoxFit.cover;
 
     Widget widget = CachedNetworkImage(
