@@ -12,6 +12,7 @@ class CSvg extends CWidget {
       super.flex,
       super.style,
       this.color,
+      this.fit,
       super.expanded,
       super.decoration,
       super.visible,
@@ -23,19 +24,25 @@ class CSvg extends CWidget {
 
   final String filename;
   final Color? color;
+  final BoxFit? fit;
 
   @override
   Widget init(BuildContext context) {
     ColorFilter? colorFilter;
-  
+
     if (color != null) {
       colorFilter = ColorFilter.mode(color!, BlendMode.srcIn);
     }
-    
-    Widget widget = SvgPicture.asset(filename,
-        width: width,
-        height: height,
-        colorFilter: colorFilter);
+
+    final fit = this.fit ?? BoxFit.cover;
+
+    Widget widget = SvgPicture.asset(
+      filename,
+      width: width,
+      height: height,
+      colorFilter: colorFilter,
+      fit: fit,
+    );
 
     return widget;
   }
