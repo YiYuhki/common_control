@@ -205,11 +205,26 @@ class CWidget extends StatelessWidget {
       var items = <Widget>[];
 
       for (var i = 0; i < children.length; i++) {
-        if (i > 0) {
+        final item = children[i];
+        if (item.runtimeType == 'SizedBox') {
+          final sizedBox = item as SizedBox;
+          if (sizedBox.width == 0) {
+            continue;
+          }
+        }
+
+        if (item.runtimeType == 'Container') {
+          final container = item as Container;
+          if (container.child == null) {
+            continue;
+          }
+        }
+          
+        if (i > 0) {          
           items.add(SizedBox(width: gap, height: gap));
         }
 
-        items.add(children[i]);
+        items.add(item);
       }
 
       children = items;

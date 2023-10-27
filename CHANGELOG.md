@@ -200,3 +200,7 @@
 ## 0.0.50
 
 * Add CSvg fit by cjh94
+
+## 0.0.51
+
+* Fix gap with SizedBox().shrink
