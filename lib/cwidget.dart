@@ -206,14 +206,14 @@ class CWidget extends StatelessWidget {
 
       for (var i = 0; i < children.length; i++) {
         final item = children[i];
-        if (item.runtimeType == 'SizedBox') {
+        if (item is SizedBox) {
           final sizedBox = item as SizedBox;
           if (sizedBox.width == 0) {
             continue;
           }
         }
 
-        if (item.runtimeType == 'Container') {
+        if (item is Container) {
           final container = item as Container;
           if (container.child == null) {
             continue;
