@@ -20,17 +20,19 @@ class CTextField extends CWidget {
       this.type = CTextFieldType.text,
       this.disabledtype = CTextFieldDisabledType.fill,
       this.svg,
+      this.filledColor,
+      this.suffixText,
       super.margin,
       super.width,
       super.height,
       super.padding,
       super.border,
       super.flex,
+      this.textStyle,
       super.style,
       super.onTap,
       super.visible,
       super.borderRadius,
-      super.backgroundColor,
       super.alignment,
       super.tag});
 
@@ -40,12 +42,15 @@ class CTextField extends CWidget {
   final bool? readOnly;
   final CTextFieldDisabledType disabledtype;
   final TextEditingController? controller;
+  final String? suffixText;
   final String? text;
-  final String? errText;
+  String? errText;
   final Function(dynamic)? onChanged;
   final FocusNode? focusNode;
   final CTextFieldType type;
   final String? svg;
+  final Color? filledColor;
+  final TextStyle? textStyle;
 
   @override
   Widget init(BuildContext context) {
@@ -61,6 +66,15 @@ class CTextField extends CWidget {
         fontSize: 12, fontWeight: FontWeight.w400, color: Color(0xffff6262));
 
     var disabledFillColor = grey50;
+    var filled = disabled ?? false ? true : false;
+    var suffixText = this.suffixText ?? '';
+
+    if (filled != true) {
+      if (filledColor != null) {
+        disabledFillColor = filledColor!;
+        filled = true;
+      }
+    }
 
     Widget? icon;
 
@@ -74,6 +88,7 @@ class CTextField extends CWidget {
     var textfield = SizedBox(
       height: maxLines == null || maxLines == 1 ? height : maxLines! * height,
       child: TextField(
+          style: textStyle,
           maxLines: maxLines ?? 1,
           onChanged: (value) {
             if (onChanged != null) {
@@ -95,8 +110,9 @@ class CTextField extends CWidget {
           obscureText: obscure ?? false ? true : false,
           enabled: disabled ?? false ? false : true,
           decoration: InputDecoration(
+              suffixText: suffixText,
               isDense: true,
-              filled: disabled ?? false ? true : false,
+              filled: filled,
               fillColor: disabledFillColor,
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(8)),

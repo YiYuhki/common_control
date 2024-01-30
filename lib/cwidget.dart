@@ -17,6 +17,8 @@ class CWidget extends StatelessWidget {
       this.expanded,
       this.style,
       this.gap,
+      this.lineWidth,
+      this.lineColor,
       this.backgroundColor,
       this.onTap,
       this.icon,
@@ -44,6 +46,8 @@ class CWidget extends StatelessWidget {
   final int? flex;
   final bool? expanded;
   final double? gap;
+  final double? lineWidth;
+  final Color? lineColor;
   final Color? backgroundColor;
 
   final Style? style;
@@ -124,6 +128,10 @@ class CWidget extends StatelessWidget {
         .show();
   }
 
+  Color? getBackgroundColor() {
+    return backgroundColor;
+  }
+
   @override
   Widget build(BuildContext context) {
     double? width = this.width;
@@ -146,9 +154,11 @@ class CWidget extends StatelessWidget {
     MainAxisSize? mainAxisSize = this.mainAxisSize;
     Alignment? alignment = this.alignment;
 
-    Color? backgroundColor = this.backgroundColor;
+    Color? backgroundColor = getBackgroundColor();
     Style? style = this.style;
     double? gap = this.gap;
+    Color? lineColor = this.lineColor;
+    double? lineWidth = this.lineWidth;
 
     List<Widget>? children = this.children;
 
@@ -193,6 +203,9 @@ class CWidget extends StatelessWidget {
           rearIconMargin ?? style.rearIconMargin ?? this.rearIconMargin;
 
       gap = gap ?? style.gap ?? this.gap;
+
+      lineWidth = lineWidth ?? style.lineWidth ?? this.lineWidth;
+      lineColor = lineColor ?? style.lineColor ?? this.lineColor;
     }
 
     if (visible == false) {
@@ -201,7 +214,7 @@ class CWidget extends StatelessWidget {
 
     Widget widget = init(context);
 
-    if (gap != null && children != null) {
+    if ((gap != null || lineWidth != null || lineColor != null) && children != null) {
       var items = <Widget>[];
 
       for (var i = 0; i < children.length; i++) {
@@ -220,8 +233,18 @@ class CWidget extends StatelessWidget {
           }
         }
           
-        if (i > 0) {          
-          items.add(SizedBox(width: gap, height: gap));
+        if (i > 0) {
+          if (gap != null) {
+            if (lineWidth != null || lineColor != null) {
+              items.add(SizedBox(width: gap / 2, height: gap / 2));
+              items.add(Container(width: double.infinity, height: lineWidth!, color: lineColor!));
+              items.add(SizedBox(width: gap / 2, height: gap / 2));
+            } else {
+              items.add(SizedBox(width: gap, height: gap));
+            }
+          } else {
+            items.add(Container(width: double.infinity, height: lineWidth!, color: lineColor!));
+          }
         }
 
         items.add(item);

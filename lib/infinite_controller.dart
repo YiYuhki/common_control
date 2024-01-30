@@ -48,7 +48,7 @@ class InfiniteController extends GetxController {
     Future.microtask(() => fetch());
   }
 
-  readItem() async {
+  readItem() async {    
     return reader(page: _page.value, pagesize: _pagesize, params: params);
   }
 

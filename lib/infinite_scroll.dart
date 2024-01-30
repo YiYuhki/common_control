@@ -15,7 +15,7 @@ class InfiniteScroll<T> extends CWidget {
       required this.builder,
       required this.controller,
       this.params,
-      required this.axis,
+      this.axis = Axis.vertical,
       super.width,
       super.height,
       super.margin,
@@ -63,7 +63,8 @@ class InfiniteScroll<T> extends CWidget {
         if (empty != null) {
           return empty!;
         }
-        return const Center(child: Text('아이템이 없습니다'));
+        //return const Center(child: Text('아이템이 없습니다'));
+        return Container();
       }
     }
 

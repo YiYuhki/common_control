@@ -3,7 +3,7 @@ import 'common_control.dart';
 class CContainer extends CWidget {
   CContainer(
       {super.key,
-      required this.child,
+      this.child,
       super.alignment,
       super.margin,
       super.width,
@@ -20,7 +20,7 @@ class CContainer extends CWidget {
       super.borderRadius,
       super.backgroundColor});
 
-  final Widget child;
+  final Widget? child;
 
   @override
   Widget init(BuildContext context) {

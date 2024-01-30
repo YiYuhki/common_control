@@ -2,7 +2,7 @@ import 'common_control.dart';
 
 class CColumn extends CWidget {
   CColumn(
-      {super.key,
+    {super.key,
       required super.children,
       super.margin,
       super.width,
@@ -22,21 +22,23 @@ class CColumn extends CWidget {
       super.visible,
       super.borderRadius,
       super.backgroundColor,
-      super.tag});
+      super.tag,
+      super.lineWidth,
+      super.lineColor});
 
   @override
   Widget initChildren(
-      Widget widget,
-      List<Widget> children,
-      MainAxisAlignment? mainAxisAlignment,
-      CrossAxisAlignment? crossAxisAlignment,
-      MainAxisSize? mainAxisSize,
-      Alignment? alignment,
-      BuildContext context) {
+    Widget widget,
+    List<Widget> children,
+    MainAxisAlignment? mainAxisAlignment,
+    CrossAxisAlignment? crossAxisAlignment,
+    MainAxisSize? mainAxisSize,
+    Alignment? alignment,
+    BuildContext context) {
     return Column(
-        crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
-        mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
-        mainAxisSize: mainAxisSize ?? MainAxisSize.max,
-        children: children);
+      crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
+      mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
+      mainAxisSize: mainAxisSize ?? MainAxisSize.max,
+      children: children);
   }
 }

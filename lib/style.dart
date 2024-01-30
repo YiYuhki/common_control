@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Style {
   Style(
-      {this.width,
+    {this.width,
       this.height,
       this.margin,
       this.padding,
@@ -22,7 +22,9 @@ class Style {
       this.borderRadius,
       this.iconMargin,
       this.rearIconMargin,
-      this.gap});
+      this.gap,
+      this.lineWidth,
+      this.lineColor});
 
   final double? width;
   final double? height;
@@ -42,6 +44,9 @@ class Style {
   final Widget? rearIcon;
 
   final double? gap;
+
+  final double? lineWidth;
+  final Color? lineColor;
 
   final bool? expanded;
   final Decoration? decoration;

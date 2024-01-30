@@ -36,13 +36,14 @@ class Http {
     final config = CConfig();
 
     try {
-      var url = '${config.serverUrl}$path';
+      var url = '${config.serverUrl}$path';      
       if (param != '') {
         url += '?$param';
       }
+      print(url);
       var result = await http.get(Uri.parse(url),
           headers: {'Authorization': 'Bearer ${config.token}'});
-      if (result.statusCode == 200) {
+      if (result.statusCode == 200) {        
         final parsed = json.decode(utf8.decode(result.bodyBytes));
         return parsed;
       }

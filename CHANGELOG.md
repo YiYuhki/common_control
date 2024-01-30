@@ -208,3 +208,7 @@
 ## 0.0.52
 
 * Fix gap with SizedBox().shrink
+
+## 0.0.53
+
+* Fix gap with SizedBox().shrink
