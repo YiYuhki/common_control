@@ -212,3 +212,7 @@
 ## 0.0.53
 
 * Fix gap with SizedBox().shrink
+
+## 0.0.54
+
+* Change library version
