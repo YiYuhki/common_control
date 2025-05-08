@@ -52,7 +52,7 @@ class CText extends CWidget {
       textStyle = textStyle ?? style?.textStyle;
     }
 
-    Widget widget = Text(
+    Widget widget = XtyleText(
       text,
       style: textStyle,
       overflow: overflow,

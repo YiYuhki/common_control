@@ -1,6 +1,6 @@
 name: common_control
 description: A new widget to replace the default widget
-version: 0.0.54
+version: 0.0.55
 homepage: https://github.com/YiYuhki
 repository: https://github.com/YiYuhki/common_control
 
@@ -18,6 +18,8 @@ dependencies:
   flutter_svg: ^2.0.5
   http: ^0.13.4
   image_picker: ^1.0.5
+  xtyle: ^0.2.0
+
 
 dev_dependencies:
   flutter_test:

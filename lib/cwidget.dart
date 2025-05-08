@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xtyle/xtyle.dart';
 import 'package:get/get.dart';
 
 import 'ccontroller.dart';
@@ -98,6 +99,14 @@ class CWidget extends StatelessWidget {
 
   static initialize() {
     Get.put(CController());
+
+    Xtyle.init(
+      configuration: XtyleConfig.korean(
+        fontFamilyKor: 'Pretendard',
+        defaultFontFamily: 'Poppins',
+      ),
+    );
+
   }
 
   unfocus() {
