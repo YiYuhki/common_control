@@ -5,6 +5,7 @@ enum CTextFieldType { text, number }
 
 enum CTextFieldDisabledType { fill, outline }
 
+// ignore: must_be_immutable
 class CTextField extends CWidget {
   CTextField(
       {super.key,

@@ -62,7 +62,7 @@ class CSnackbar extends CWidget {
       padding: const EdgeInsets.fromLTRB(14, 14, 14, 20),
       margin: const EdgeInsets.all(15),
       borderRadius: 14,
-      backgroundColor: Colors.black.withOpacity(0.8),
+      backgroundColor: Colors.black.withValues(alpha: 0.8),
       barBlur: 0.0,
       titleText: const SizedBox.shrink(),
       messageText: CText(content, textStyle: contentTextStyle),

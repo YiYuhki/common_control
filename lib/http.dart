@@ -40,7 +40,7 @@ class Http {
       if (param != '') {
         url += '?$param';
       }
-      print(url);
+
       var result = await http.get(Uri.parse(url),
           headers: {'Authorization': 'Bearer ${config.token}'});
       if (result.statusCode == 200) {        
