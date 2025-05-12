@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:xtyle/xtyle.dart';
 import 'package:get/get.dart';
+import 'package:xtyle/xtyle.dart';
 
 import 'ccontroller.dart';
 import 'cdialog.dart';
@@ -97,16 +97,16 @@ class CWidget extends StatelessWidget {
       MediaQuery.of(Get.context!).padding.bottom -
       AppBar().preferredSize.height;
 
-  static initialize() {
+  static initialize(
+      {String fontFamilyKor = 'Pretendard', String fontFamily = 'Poppins'}) {
     Get.put(CController());
 
     Xtyle.init(
       configuration: XtyleConfig.korean(
-        fontFamilyKor: 'Pretendard',
-        defaultFontFamily: 'Poppins',
+        fontFamilyKor: fontFamilyKor,
+        defaultFontFamily: fontFamily,
       ),
     );
-
   }
 
   unfocus() {
@@ -223,7 +223,8 @@ class CWidget extends StatelessWidget {
 
     Widget widget = init(context);
 
-    if ((gap != null || lineWidth != null || lineColor != null) && children != null) {
+    if ((gap != null || lineWidth != null || lineColor != null) &&
+        children != null) {
       var items = <Widget>[];
 
       for (var i = 0; i < children.length; i++) {
@@ -241,18 +242,22 @@ class CWidget extends StatelessWidget {
             continue;
           }
         }
-          
+
         if (i > 0) {
           if (gap != null) {
             if (lineWidth != null || lineColor != null) {
               items.add(SizedBox(width: gap / 2, height: gap / 2));
-              items.add(Container(width: double.infinity, height: lineWidth!, color: lineColor!));
+              items.add(Container(
+                  width: double.infinity,
+                  height: lineWidth!,
+                  color: lineColor!));
               items.add(SizedBox(width: gap / 2, height: gap / 2));
             } else {
               items.add(SizedBox(width: gap, height: gap));
             }
           } else {
-            items.add(Container(width: double.infinity, height: lineWidth!, color: lineColor!));
+            items.add(Container(
+                width: double.infinity, height: lineWidth!, color: lineColor!));
           }
         }
 

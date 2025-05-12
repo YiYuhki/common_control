@@ -220,3 +220,8 @@
 ## 0.0.55
 
 * Replace Text widget with xtyle widget
+
+## 0.0.56
+
+* Added font initialization code
+* Modified to apply textStyle to CText style

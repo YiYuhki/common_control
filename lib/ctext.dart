@@ -41,7 +41,13 @@ class CText extends CWidget {
     Style? style = this.style;
 
     if (style != null) {
-      textStyle = textStyle ?? style.textStyle ?? this.textStyle;
+      if (textStyle == null) {
+        if (style is TextStyle) {
+          textStyle = style as TextStyle;
+        } else {
+          textStyle = textStyle ?? style.textStyle;
+        }
+      }
     } else {
       if (tag != null) {
         style = commonController.getStyle(Get.currentRoute, tag);
