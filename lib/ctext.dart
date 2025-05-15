@@ -42,11 +42,11 @@ class CText extends CWidget {
 
     if (style != null) {
       if (textStyle == null) {
-        if (style is TextStyle) {
-          textStyle = style? as TextStyle;
-        } else {
+        // if (style is TextStyle) {
+        //   textStyle = style? as TextStyle;
+        // } else {
           textStyle = textStyle ?? style.textStyle;
-        }
+        // }
       }
     } else {
       if (tag != null) {
