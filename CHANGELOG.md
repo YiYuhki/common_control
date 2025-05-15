@@ -233,3 +233,7 @@
 ## 0.0.58
 
 * Add attribue CButton color
+
+## 0.0.59
+
+* Add attribue CButton textColor

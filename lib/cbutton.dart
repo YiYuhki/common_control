@@ -13,6 +13,7 @@ class CButton extends CWidget {
       this.size,
       this.color,
       this.type,
+      this.textColor,
       super.width,
       super.height,
       super.margin,
@@ -34,6 +35,7 @@ class CButton extends CWidget {
   final CButtonSize? size;
   final CButtonStyle? type;
   final Color? color;
+  final Color? textColor;
 
   @override
   Widget init(BuildContext context) {
@@ -45,7 +47,7 @@ class CButton extends CWidget {
     double fontsize = 14;
     double bdradius = super.borderRadius ?? 8;
     Color bgColor = color ?? grey900;
-    Color textColor = Colors.white;
+    Color textColor = this.textColor ?? Colors.white;
     Color borderColor = grey200;
 
     if (size != null) {
