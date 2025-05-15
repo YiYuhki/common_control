@@ -20,7 +20,7 @@ class CButton extends CWidget {
       super.visible,
       super.borderRadius,
       super.backgroundColor,
-      super.style,      
+      super.style,
       super.gap,
       super.onTap,
       super.expanded,
@@ -35,14 +35,14 @@ class CButton extends CWidget {
 
   @override
   Widget init(BuildContext context) {
-    const grey900 = Color(0xff212121);  
+    const grey900 = Color(0xff212121);
     const grey500 = Color(0xff9E9E9E);
-    const grey200 = Color(0xffEEEEEE);  
+    const grey200 = Color(0xffEEEEEE);
 
     double height = 48;
     double fontsize = 14;
-    double bdradius = 8;
-    Color bgColor = grey900;
+    double bdradius = super.borderRadius ?? 8;
+    Color bgColor = super.backgroundColor ?? grey900;
     Color textColor = Colors.white;
     Color borderColor = grey200;
 
@@ -108,4 +108,3 @@ class CButton extends CWidget {
     return widget;
   }
 }
-

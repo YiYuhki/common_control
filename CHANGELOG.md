@@ -225,3 +225,7 @@
 
 * Added font initialization code
 * Modified to apply textStyle to CText style
+
+## 0.0.57
+
+* Add attribue CButton backgroundColor, borderRadius
