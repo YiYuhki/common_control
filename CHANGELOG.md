@@ -229,3 +229,7 @@
 ## 0.0.57
 
 * Add attribue CButton backgroundColor, borderRadius
+
+## 0.0.58
+
+* Add attribue CButton color

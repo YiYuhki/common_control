@@ -11,6 +11,7 @@ class CButton extends CWidget {
       this.onPressed,
       this.disabled,
       this.size,
+      this.color,
       this.type,
       super.width,
       super.height,
@@ -32,6 +33,7 @@ class CButton extends CWidget {
   final bool? disabled;
   final CButtonSize? size;
   final CButtonStyle? type;
+  final Color? color;
 
   @override
   Widget init(BuildContext context) {
@@ -42,7 +44,7 @@ class CButton extends CWidget {
     double height = 48;
     double fontsize = 14;
     double bdradius = super.borderRadius ?? 8;
-    Color bgColor = super.backgroundColor ?? grey900;
+    Color bgColor = color ?? grey900;
     Color textColor = Colors.white;
     Color borderColor = grey200;
 
