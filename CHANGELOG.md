@@ -237,3 +237,7 @@
 ## 0.0.59
 
 * Add attribue CButton textColor
+
+## 0.0.60
+
+* getx, http, image picker version upgrade
