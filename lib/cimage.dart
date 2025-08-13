@@ -20,11 +20,13 @@ class CImage extends CWidget {
       super.style,
       super.backgroundColor,
       super.alignment,
+      this.errorImage = '',
       super.tag});
 
   final BoxFit? fit;
   final String? hero;
   final String image;
+  final String errorImage;
 
   @override
   Widget init(BuildContext context) {
@@ -39,15 +41,28 @@ class CImage extends CWidget {
     if (image == '') {
       return SizedBox(width: width, height: height);
     }
-        
+
     final fit = this.fit ?? BoxFit.cover;
 
-    Widget widget = CachedNetworkImage(
-      width: width,
-      height: height,
-      fit: fit,
-      imageUrl: image,
-    );
+    Widget widget;
+
+    if (errorImage.isNotEmpty) {
+      widget = CachedNetworkImage(
+        width: width,
+        height: height,
+        fit: fit,
+        imageUrl: image,
+        errorWidget: (context, url, error) =>
+            Image.asset(errorImage, width: width, height: height),
+      );
+    } else {
+      widget = CachedNetworkImage(
+        width: width,
+        height: height,
+        fit: fit,
+        imageUrl: image,
+      );
+    }
 
     if (hero != null && hero!.isNotEmpty) {
       widget = Hero(tag: '$hero $image', child: widget);

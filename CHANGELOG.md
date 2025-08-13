@@ -241,3 +241,7 @@
 ## 0.0.60
 
 * getx, http, image picker version upgrade
+
+## 0.0.61
+
+* CImage add errorWidget
