@@ -9,6 +9,7 @@ class InfiniteScroll<T> extends CWidget {
   final String? params;
   final Axis axis;
   final Widget? empty;
+  final Widget? bottom;
 
   InfiniteScroll(
       {super.key,
@@ -27,7 +28,8 @@ class InfiniteScroll<T> extends CWidget {
       super.icon,
       super.rearIcon,
       super.backgroundColor,
-      this.empty});
+      this.empty,
+      this.bottom});
 
   @override
   Widget init(context) {
@@ -77,7 +79,11 @@ class InfiniteScroll<T> extends CWidget {
           }
 
           if (end) {
-            return Container();
+            if (bottom != null) {
+              return bottom!;
+            } else {
+              return Container();
+            }
           }
 
           if (!loading) {
