@@ -21,7 +21,6 @@ class CWidget extends StatelessWidget {
       this.lineWidth,
       this.lineColor,
       this.backgroundColor,
-      this.color,
       this.onTap,
       this.icon,
       this.rearIcon,
@@ -51,7 +50,6 @@ class CWidget extends StatelessWidget {
   final double? lineWidth;
   final Color? lineColor;
   final Color? backgroundColor;
-  final Color? color;
 
   final Style? style;
 
@@ -166,7 +164,6 @@ class CWidget extends StatelessWidget {
     Alignment? alignment = this.alignment;
 
     Color? backgroundColor = getBackgroundColor();
-    Color? color = this.color;
     Style? style = this.style;
     double? gap = this.gap;
     Color? lineColor = this.lineColor;
@@ -192,7 +189,6 @@ class CWidget extends StatelessWidget {
       flex = flex ?? style.flex ?? this.flex;
       backgroundColor =
           backgroundColor ?? style.backgroundColor ?? this.backgroundColor;
-      color = color ?? style.color ?? this.color;
 
       crossAxisAlignment = crossAxisAlignment ??
           style.crossAxisAlignment ??
@@ -307,22 +303,20 @@ class CWidget extends StatelessWidget {
           children: icons);
     }
 
-    color = color ?? backgroundColor;
-
     if (decoration == null) {
-      if (borderRadius != null || color != null || border != null) {
+      if (borderRadius != null || backgroundColor != null || border != null) {
         if (borderRadius == null) {
           if (border == null) {
             decoration = BoxDecoration(
-              color: color,
+              color: backgroundColor,
             );
           } else {
             decoration = BoxDecoration(
               border: border,
-              color: color,
+              color: backgroundColor,
             );
           }
-        } else if (color == null) {
+        } else if (backgroundColor == null) {
           if (border == null) {
             decoration = BoxDecoration(
               borderRadius: BorderRadius.circular(borderRadius),
@@ -337,13 +331,13 @@ class CWidget extends StatelessWidget {
           if (border == null) {
             decoration = BoxDecoration(
               borderRadius: BorderRadius.circular(borderRadius),
-              color: color,
+              color: backgroundColor,
             );
           } else {
             decoration = BoxDecoration(
               border: border,
               borderRadius: BorderRadius.circular(borderRadius),
-              color: color,
+              color: backgroundColor,
             );
           }
         }
