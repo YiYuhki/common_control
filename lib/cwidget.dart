@@ -21,6 +21,7 @@ class CWidget extends StatelessWidget {
       this.lineWidth,
       this.lineColor,
       this.backgroundColor,
+      this.color,
       this.onTap,
       this.icon,
       this.rearIcon,
@@ -50,6 +51,7 @@ class CWidget extends StatelessWidget {
   final double? lineWidth;
   final Color? lineColor;
   final Color? backgroundColor;
+  final Color? color;
 
   final Style? style;
 
@@ -164,6 +166,7 @@ class CWidget extends StatelessWidget {
     Alignment? alignment = this.alignment;
 
     Color? backgroundColor = getBackgroundColor();
+    Color? color = this.color;
     Style? style = this.style;
     double? gap = this.gap;
     Color? lineColor = this.lineColor;
@@ -189,6 +192,7 @@ class CWidget extends StatelessWidget {
       flex = flex ?? style.flex ?? this.flex;
       backgroundColor =
           backgroundColor ?? style.backgroundColor ?? this.backgroundColor;
+      color = color ?? style.color ?? this.color;
 
       crossAxisAlignment = crossAxisAlignment ??
           style.crossAxisAlignment ??
@@ -272,19 +276,6 @@ class CWidget extends StatelessWidget {
           crossAxisAlignment, mainAxisSize, alignment, context);
     }
 
-    if (padding != null || alignment != null) {
-      widget = Container(padding: padding, alignment: alignment, child: widget);
-    }
-
-    if (border != null) {
-      decoration = decoration ?? BoxDecoration(border: border);
-    }
-
-    if (decoration != null || width != null || height != null) {
-      widget = Container(
-          decoration: decoration, width: width, height: height, child: widget);
-    }
-
     if (onTap != null) {
       widget = GestureDetector(
           behavior: HitTestBehavior.translucent, onTap: onTap, child: widget);
@@ -316,13 +307,63 @@ class CWidget extends StatelessWidget {
           children: icons);
     }
 
-    if (borderRadius != null) {
-      widget = ClipRRect(
-          borderRadius: BorderRadius.circular(borderRadius), child: widget);
+    color = color ?? backgroundColor;
+
+    if (decoration == null) {
+      if (borderRadius != null || color != null || border != null) {
+        if (borderRadius == null) {
+          if (border == null) {
+            decoration = BoxDecoration(
+              color: color,
+            );
+          } else {
+            decoration = BoxDecoration(
+              border: border,
+              color: color,
+            );
+          }
+        } else if (color == null) {
+          if (border == null) {
+            decoration = BoxDecoration(
+              borderRadius: BorderRadius.circular(borderRadius),
+            );
+          } else {
+            decoration = BoxDecoration(
+              border: border,
+              borderRadius: BorderRadius.circular(borderRadius),
+            );
+          }
+        } else {
+          if (border == null) {
+            decoration = BoxDecoration(
+              borderRadius: BorderRadius.circular(borderRadius),
+              color: color,
+            );
+          } else {
+            decoration = BoxDecoration(
+              border: border,
+              borderRadius: BorderRadius.circular(borderRadius),
+              color: color,
+            );
+          }
+        }
+      }
     }
 
-    if (backgroundColor != null || margin != null) {
-      widget = Container(color: backgroundColor, margin: margin, child: widget);
+    if (padding != null ||
+        alignment != null ||
+        decoration != null ||
+        width != null ||
+        height != null ||
+        margin != null) {
+      widget = Container(
+          alignment: alignment,
+          decoration: decoration,
+          margin: margin,
+          padding: padding,
+          width: width,
+          height: height,
+          child: widget);
     }
 
     if (flex != null && flex > 0) {

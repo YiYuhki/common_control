@@ -249,3 +249,8 @@
 ## 0.0.62
 
 * Add InfiniteScroll bottom 
+
+## 0.0.63
+
+* Improvement of the part where containers are entered multiple times
+* Fixed an error that occurred when borderRadius and backgroundColor were used together.
