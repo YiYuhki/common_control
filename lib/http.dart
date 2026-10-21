@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:common_control/cconfig.dart';
 import 'package:flutter/foundation.dart';
@@ -158,6 +159,62 @@ class Http {
       var responseData = await json.decode(utf8.decode(responsed.bodyBytes));
 
       return responseData['filename'];
+    }
+
+    return '';
+  }
+
+  // 파일(PDF 등)을 바이트로 받는다. 실패하면 빈 바이트
+  static Future<Uint8List> download(String path,
+      [Map<String, dynamic>? params]) async {
+    var param = makeParams(params);
+
+    final config = CConfig();
+
+    try {
+      var url = '${config.serverUrl}$path';
+      if (param != '') {
+        url += '?$param';
+      }
+
+      var result = await http.get(Uri.parse(url),
+          headers: {'Authorization': 'Bearer ${config.token}'});
+      if (result.statusCode == 200) {
+        return result.bodyBytes;
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
+
+    return Uint8List(0);
+  }
+
+  // upload 의 웹판 — 웹에는 파일 경로가 없어 바이트와 파일명(확장자 포함)으로 올린다. 서버가 저장한 파일명을 돌려준다
+  static Future<String> uploadWeb(
+      String url, String name, Uint8List bytes, String filename) async {
+    final config = CConfig();
+
+    try {
+      http.MultipartRequest request =
+          http.MultipartRequest('POST', Uri.parse('${config.serverUrl}$url'));
+      request.headers.addAll({'Authorization': 'Bearer ${config.token}'});
+      request.files.add(http.MultipartFile.fromBytes(name, bytes,
+          filename: filename.split('/').last));
+
+      var response = await request.send();
+      var responsed = await http.Response.fromStream(response);
+
+      if (response.statusCode == 200) {
+        var responseData = json.decode(utf8.decode(responsed.bodyBytes));
+
+        return responseData['filename'] ?? '';
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
     }
 
     return '';
